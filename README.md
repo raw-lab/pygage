@@ -1,6 +1,6 @@
 # pygage - GAGE Analysis in Python
 
-Python version of the PYGAGE (Generally Applicable Gene Set Enrichment) analysis package.
+Python version of the GAGE (Generally Applicable Gene Set Enrichment) analysis package.
 
 ## Overview
 
@@ -483,8 +483,6 @@ df.join(other_df, on='key', how='left')
 
 ---
 
----
-
 ## Error Handling
 
 All scripts include comprehensive error handling:
@@ -497,20 +495,6 @@ except ValueError as e:
     print(f"Error: {e}")
 except FileNotFoundError:
     print("Mapping file not found")
-```
-
----
-
-## Testing
-
-Run unit tests (if available):
-```bash
-pytest test_*.py
-```
-
-Run integration test:
-```bash
-bash run_complete_workflow.sh test_data/
 ```
 
 ---
@@ -543,10 +527,15 @@ Improvements welcome:
 
 ## License
 
-
+BSD-3-Clause — See LICENSE file
 
 ## Citation
 
 If using these tools, please cite:
 - Original GAGE paper: Luo et al. (2009) BMC Bioinformatics
-- This Python implementation: 
+
+## Support
+
+- **Issues:** https://github.com/raw-lab/pygage/issues
+- **Email:** rwhit101@charlotte.edu 
+---

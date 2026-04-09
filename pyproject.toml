@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyGAGE"
+dynamic = ["version"]
+description = "Python version of the GAGE (Generally Applicable Gene Set Enrichment) analysis package."
+readme = "README.md"
+authors = [
+    {name = "Richard A. White III", email = "rwhit101@charlotte.edu"},
+    {name = "Jose L. Figueroa III", email = "jlfiguer@charlotte.edu"},
+]
+requires-python = ">=3.8"
+dependencies = [
+    "polars",
+    "numpy",
+    "scipy",
+    "seaborn",
+    "pyarrow",
+    "requests"
+]
+
+[project.urls]
+Repository = "https://github.com/raw-lab/pygage"
+
+[tool.setuptools]
+script-files = ["bin/pygage-core.py",
+                "bin/pygage-data_processing_utils.py",
+                "bin/pygage-gene_id_utils.py",
+                "bin/pygage-pathway_database_utils.py",
+                "bin/pygage-results_analysis.py",
+                "bin/pygage-tests.py",
+                "bin/pygage-visualization_utils.py"
+                ]
+include-package-data = true
+packages = ["pygage"]
+
+[tool.setuptools.package-dir]
+pygage = "lib"
+
+[tool.setuptools.package-data]
+pygage = ["data/*.tsv"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pygage.__version__"}

@@ -6,12 +6,9 @@ Functions for retrieving gene sets from KEGG pathways and Gene Ontology database
 
 """
 
-import polars as pl
-import argparse
 import requests
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-import json
+from typing import Dict, List, Optional
 from collections import defaultdict
 
 
@@ -68,15 +65,18 @@ class KEGGPathwayRetriever:
                 - categories: Dict with signal, metabolic, disease indices
         """
         # Get species info
+        print("Getting species code...")
         species_info = self.get_species_code(species)
         
         # Get pathway list for species
+        print("Retrieving pathway list for species...")
         url = f"{self.KEGG_REST_BASE}/list/pathway/{species}"
         response = requests.get(url)
         
         if response.status_code != 200:
             raise RuntimeError(f"Failed to fetch pathways: {response.status_code}")
         
+        print("Parsing pathway list...")
         pathway_names = {}
         for line in response.text.strip().split('\n'):
             parts = line.split('\t')
@@ -86,6 +86,7 @@ class KEGGPathwayRetriever:
                 pathway_names[pathway_id] = pathway_name
         
         # Get genes for each pathway
+        print(f"Retrieving genes for {len(pathway_names)} pathways...")
         gene_sets = {}
         for pathway_id in pathway_names.keys():
             url = f"{self.KEGG_REST_BASE}/link/{species}/pathway:{species}{pathway_id}"
@@ -226,87 +227,3 @@ class GOGeneSetRetriever:
         # This is a placeholder implementation
         
         return categories
-
-
-def main():
-    """Command-line interface for pathway retrieval."""
-    parser = argparse.ArgumentParser(
-        description='Retrieve pathway gene sets from KEGG or GO databases'
-    )
-    
-    subparsers = parser.add_subparsers(dest='database', help='Database to query')
-    
-    # KEGG subcommand
-    kegg_parser = subparsers.add_parser('kegg', help='Retrieve KEGG pathways')
-    kegg_parser.add_argument(
-        '--species',
-        default='hsa',
-        help='Species code (default: hsa for human)'
-    )
-    kegg_parser.add_argument(
-        '--id-type',
-        choices=['kegg', 'entrez'],
-        default='kegg',
-        help='Gene ID type (default: kegg)'
-    )
-    kegg_parser.add_argument(
-        '--output',
-        type=Path,
-        required=True,
-        help='Output JSON file for gene sets'
-    )
-    
-    # GO subcommand
-    go_parser = subparsers.add_parser('go', help='Retrieve GO gene sets')
-    go_parser.add_argument(
-        '--annotation-file',
-        type=Path,
-        required=True,
-        help='GO annotation file (GAF format)'
-    )
-    go_parser.add_argument(
-        '--species',
-        default='human',
-        help='Species name (default: human)'
-    )
-    go_parser.add_argument(
-        '--output',
-        type=Path,
-        required=True,
-        help='Output JSON file for gene sets'
-    )
-    
-    args = parser.parse_args()
-    
-    if args.database == 'kegg':
-        retriever = KEGGPathwayRetriever()
-        results = retriever.get_pathway_genes(
-            species=args.species,
-            id_type=args.id_type
-        )
-        
-        with open(args.output, 'w') as f:
-            json.dump(results, f, indent=2)
-        
-        print(f"Retrieved {len(results['gene_sets'])} KEGG pathways")
-        print(f"Results written to {args.output}")
-    
-    elif args.database == 'go':
-        retriever = GOGeneSetRetriever()
-        results = retriever.get_go_gene_sets(
-            species=args.species,
-            annotation_file=args.annotation_file
-        )
-        
-        with open(args.output, 'w') as f:
-            json.dump(results, f, indent=2)
-        
-        print(f"Retrieved {len(results['gene_sets'])} GO terms")
-        print(f"Results written to {args.output}")
-    
-    else:
-        parser.print_help()
-
-
-if __name__ == '__main__':
-    main()
