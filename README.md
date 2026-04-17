@@ -539,17 +539,30 @@ Improvements welcome:
 
 ---
 
-## License
+## 📄 License
 
-BSD-3-Clause — See LICENSE file
+Creative Commons Attribution-NonCommercial (CC BY-NC 4.0) — See LICENSE file
 
-## Citation
+**Citations:**
 
-If using these tools, please cite:
-- Original GAGE paper: Luo et al. (2009) BMC Bioinformatics
+If you are publishing results obtained using PyGAGE, please cite: <br />
+- Pre-Print PyGAGE: Figueroa III JL, Brouwer CR, White III RA. 2026. Statistically resolving gene-set enrichment for pathway analysis that is broadly applicable via PyGAGE. bioRxiv.
 
-## Support
+If you using the R version please cite: <br />
+- Luo, W., Friedman, M. S., Shedden, K., Hankenson, K. D., & Woolf, P. J. (2009). GAGE: generally applicable gene set enrichment for pathway analysis.
+BMC Bioinformatics, 10, 161. [GAGE](https://doi.org/10.1186/1471-2105-10-161)
 
-- **Issues:** https://github.com/raw-lab/pygage/issues
-- **Email:** rwhit101@charlotte.edu 
+---
+
+## Contributing to PyGAGE
+
+We welcome contributions of other experts expanding features in PyGAGE including the R and python versions. Please contact us via support. 
+
+---
+
+## 📞 Support
+
+- **Issues:** [open an issue](https://github.com/raw-lab/pygage/issues).  
+- **Email:** [Dr. Richard Allen White III](mailto:rwhit101@uncc.edu)
+
 ---
