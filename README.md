@@ -13,8 +13,22 @@ Uses Python modules using:
 
 ## Installation
 
+### Quick install
+
 ```bash
+pip install pygage
+```
+
+### Custom install
+
+```bash
+# Clone repository
+git clone https://github.com/raw-lab/pygage
+cd pygage
+
+# Install dependencies
 pip install polars numpy scipy matplotlib seaborn requests
+pip install .
 ```
 
 ## Modules
@@ -25,13 +39,13 @@ Convert between Entrez Gene IDs and gene symbols.
 **Usage:**
 ```bash
 # Convert Entrez IDs to symbols
-python gene_id_utils.py input_ids.txt \
+pygage-gene_id_utils.py input_ids.txt \
     --mapping egSymb.csv \
     --direction eg2sym \
     --output output_symbols.csv
 
 # Convert symbols to Entrez IDs
-python gene_id_utils.py input_symbols.txt \
+pygage-gene_id_utils.py input_symbols.txt \
     --mapping egSymb.csv \
     --direction sym2eg \
     --output output_ids.csv
@@ -39,7 +53,7 @@ python gene_id_utils.py input_symbols.txt \
 
 **Python API:**
 ```python
-from gene_id_utils import GeneIDConverter
+from pygage.gene_id_utils import GeneIDConverter
 
 converter = GeneIDConverter('egSymb.csv')
 symbols = converter.eg2sym(['1', '2', '3'])
@@ -54,13 +68,13 @@ Retrieve gene sets from KEGG and Gene Ontology databases.
 **Usage:**
 ```bash
 # Retrieve KEGG pathways
-python pathway_database_utils.py kegg \
+pygage-pathway_database_utils.py kegg \
     --species hsa \
     --id-type entrez \
     --output kegg_pathways.json
 
 # Retrieve GO gene sets
-python pathway_database_utils.py go \
+pygage-pathway_database_utils.py go \
     --annotation-file goa_human.gaf \
     --species human \
     --output go_genesets.json
@@ -68,7 +82,7 @@ python pathway_database_utils.py go \
 
 **Python API:**
 ```python
-from pathway_database_utils import KEGGPathwayRetriever, GOGeneSetRetriever
+from pygage.pathway_database_utils import KEGGPathwayRetriever, GOGeneSetRetriever
 
 # KEGG
 kegg = KEGGPathwayRetriever()
@@ -87,14 +101,14 @@ Create heatmaps, Venn diagrams, and color palettes.
 **Usage:**
 ```bash
 # Create Venn diagram
-python visualization_utils.py venn \
+pygage-visualization_utils.py venn \
     --input comparison_data.csv \
     --names "Sample1" "Sample2" "Sample3" \
     --include both \
     --output venn_diagram.png
 
 # Create heatmap
-python visualization_utils.py heatmap \
+pygage-visualization_utils.py heatmap \
     --input expression_data.csv \
     --output heatmap.png \
     --cluster \
@@ -104,7 +118,7 @@ python visualization_utils.py heatmap \
 
 **Python API:**
 ```python
-from visualization_utils import HeatmapPlotter, VennDiagram, ColorUtils
+from pygage.visualization_utils import HeatmapPlotter, VennDiagram, ColorUtils
 import polars as pl
 
 # Heatmap
@@ -129,19 +143,19 @@ Data transformation, normalization, and gene extraction.
 **Usage:**
 ```bash
 # Normalize data
-python data_processing_utils.py normalize \
+pygage-data_processing_utils.py normalize \
     --input expression_data.csv \
     --output normalized_data.csv
 
 # Extract essential genes
-python data_processing_utils.py extract \
+pygage-data_processing_utils.py extract \
     --input expression_data.csv \
     --genes gene_list.txt \
     --output essential_genes.csv \
     --threshold 1.5
 
 # Export and visualize
-python data_processing_utils.py export \
+pygage-data_processing_utils.py export \
     --input expression_data.csv \
     --genes gene_list.txt \
     --output gene_data.csv \
@@ -151,7 +165,7 @@ python data_processing_utils.py export \
 
 **Python API:**
 ```python
-from data_processing_utils import DataTransformer, GeneExtractor, GeneDataExporter
+from pygage.data_processing_utils import DataTransformer, GeneExtractor, GeneDataExporter
 import polars as pl
 
 # Normalize
@@ -185,7 +199,7 @@ Core GAGE analysis functions.
 
 **Usage:**
 ```bash
-python gage_core.py \
+pygage-core.py \
     --expression expression_data.csv \
     --gene-sets pathways.json \
     --gene-col gene_id \
@@ -199,7 +213,7 @@ python gage_core.py \
 
 **Python API:**
 ```python
-from gage_core import GAGEPreparation, GAGEAnalysis
+from pygage.gage_core import GAGEPreparation, GAGEAnalysis
 import polars as pl
 import json
 
@@ -236,7 +250,7 @@ Statistical tests for gene set analysis.
 
 **Usage:**
 ```bash
-python gage_tests.py \
+pygage-tests.py \
     --expression expression_data.csv \
     --gene-sets pathways.json \
     --gene-col gene_id \
@@ -248,7 +262,7 @@ python gage_tests.py \
 
 **Python API:**
 ```python
-from gage_tests import GeneSetTests
+from pygage.tests import GeneSetTests
 import polars as pl
 import json
 
@@ -276,7 +290,7 @@ Analyze and compare GAGE results.
 **Usage:**
 ```bash
 # Compare multiple results
-python results_analysis.py compare \
+pygage-results_analysis.py compare \
     --inputs result1.tsv result2.tsv result3.tsv \
     --names "Control" "Treatment1" "Treatment2" \
     --cutoff 0.1 \
@@ -284,14 +298,14 @@ python results_analysis.py compare \
     --venn comparison_venn.png
 
 # Filter significant results
-python results_analysis.py filter \
+pygage-results_analysis.py filter \
     --greater greater_results.tsv \
     --less less_results.tsv \
     --cutoff 0.1 \
     --output-dir filtered_results/
 
 # Group overlapping gene sets
-python results_analysis.py group \
+pygage-results_analysis.py group \
     --results gage_results.tsv \
     --gene-sets pathways.json \
     --expression expression_data.csv \
@@ -300,7 +314,7 @@ python results_analysis.py group \
 
 **Python API:**
 ```python
-from results_analysis import ResultsComparator, GeneSetGrouper, SignificanceFilter
+from pygage.results_analysis import ResultsComparator, GeneSetGrouper, SignificanceFilter
 from pathlib import Path
 
 # Compare results
@@ -344,24 +358,24 @@ groups = grouper.group_gene_sets(
 #!/bin/bash
 
 # 1. Convert gene IDs (if needed)
-python gene_id_utils.py gene_list.txt \
+pygage-gene_id_utils.py gene_list.txt \
     --mapping egSymb.csv \
     --direction eg2sym \
     --output gene_symbols.csv
 
 # 2. Retrieve KEGG pathways
-python pathway_database_utils.py kegg \
+pygage-pathway_database_utils.py kegg \
     --species hsa \
     --id-type entrez \
     --output kegg_pathways.json
 
 # 3. Prepare and normalize expression data
-python data_processing_utils.py normalize \
+pygage-data_processing_utils.py normalize \
     --input raw_expression.csv \
     --output normalized_expression.csv
 
 # 4. Run GAGE analysis
-python gage_core.py \
+pygage-core.py \
     --expression normalized_expression.csv \
     --gene-sets kegg_pathways.json \
     --gene-col gene_id \
@@ -373,28 +387,28 @@ python gage_core.py \
     --output gage_results/
 
 # 5. Filter significant results
-python results_analysis.py filter \
+pygage-results_analysis.py filter \
     --greater gage_results/greater.tsv \
     --less gage_results/less.tsv \
     --cutoff 0.05 \
     --output-dir significant_results/
 
 # 6. Create visualizations
-python visualization_utils.py heatmap \
+pygage-visualization_utils.py heatmap \
     --input significant_results/greater_significant.tsv \
     --output heatmap_upregulated.png \
     --cluster \
     --title "Up-regulated Pathways"
 
 # 7. Extract essential genes from top pathway
-python data_processing_utils.py extract \
+pygage-data_processing_utils.py extract \
     --input normalized_expression.csv \
     --genes top_pathway_genes.txt \
     --output essential_genes.csv \
     --threshold 2.0
 
 # 8. Export with visualization
-python data_processing_utils.py export \
+pygage-data_processing_utils.py export \
     --input normalized_expression.csv \
     --genes essential_genes.csv \
     --output essential_genes_data.csv \
