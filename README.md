@@ -537,13 +537,15 @@ Improvements welcome:
 3. Add support for more gene set databases
 4. Improve performance with parallel processing
 
+We welcome contributions of other experts expanding features in PyGAGE including the R and python versions. Please contact us via support. 
+
 ---
 
 ## 📄 License
 
 Creative Commons Attribution-NonCommercial (CC BY-NC 4.0) — See LICENSE file
 
-**Citations:**
+## 📚 Citing
 
 If you are publishing results obtained using PyGAGE, please cite: <br />
 - Pre-Print PyGAGE: Figueroa III JL, Brouwer CR, White III RA. 2026. Statistically resolving gene-set enrichment for pathway analysis that is broadly applicable via PyGAGE. bioRxiv.
@@ -551,12 +553,6 @@ If you are publishing results obtained using PyGAGE, please cite: <br />
 If you using the R version please cite: <br />
 - Luo, W., Friedman, M. S., Shedden, K., Hankenson, K. D., & Woolf, P. J. (2009). GAGE: generally applicable gene set enrichment for pathway analysis.
 BMC Bioinformatics, 10, 161. [GAGE](https://doi.org/10.1186/1471-2105-10-161)
-
----
-
-## Contributing to PyGAGE
-
-We welcome contributions of other experts expanding features in PyGAGE including the R and python versions. Please contact us via support. 
 
 ---
 
