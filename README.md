@@ -1,6 +1,8 @@
-# pygage - GAGE Analysis in Python
+# pyGAGE - GAGE Analysis in Python
 
 Python version of the GAGE (Generally Applicable Gene Set Enrichment) analysis package.
+
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pygage?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pygage)
 
 ## Overview
 
