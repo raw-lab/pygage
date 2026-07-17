@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index &mdash; PyGAGE 1.2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b6192ffe" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyGAGE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-pypi">From PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-bioconda">From Bioconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-source">From source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verify">Verify</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#from-the-command-line">From the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">How GAGE works</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="method.html#preparation">1. Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#per-sample-gene-set-statistic">2. Per-sample gene-set statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#cross-sample-meta-summarisation">3. Cross-sample meta-summarisation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/inputs.html">Inputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#raw-expression-matrix">Raw expression matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#de-tables-deseq2-edger-limma">DE tables (DESeq2 / edgeR / limma)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pre-ranked-vector-fgsea-style">Pre-ranked vector (fgsea-style)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pandas-anndata">pandas / AnnData</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/genesets.html">Gene-set sourcing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-pathways-any-organism">KEGG pathways (any organism)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-orthology-species-agnostic">KEGG Orthology (species-agnostic)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#gene-ontology-gaf-obo-with-propagation">Gene Ontology (GAF + OBO, with propagation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#reactome">Reactome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#msigdb-any-gmt">MSigDB / any GMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#versioned-offline-cache">Versioned offline cache</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/running.html">Running GAGE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#typed-result">Typed result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#the-gage-convenience-function">The <code class="docutils literal notranslate"><span class="pre">gage()</span></code> convenience function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/results.html">Understanding the results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/results.html#collapsing-redundant-sets">Collapsing redundant sets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/visualization.html">Visualization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#run-gage">Run GAGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#download-kegg-gene-sets">Download KEGG gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#build-go-gene-sets">Build GO gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#compare-result-tables">Compare result tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#migration-from-the-1-0-0-scripts">Migration from the 1.0.0 scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validation.html">Validation / parity with gage R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance &amp; the Rust kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#optional-rust-pyo3-kernel-for-the-per-set-statistic-loop">Optional Rust/PyO3 kernel for the per-set statistic loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#when-it-is-worth-it">When it is worth it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#what-to-port">What to port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#correctness-gate-the-important-part">Correctness gate (the important part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#expected-speedup">Expected speedup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.core">Core engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.benjamini_hochberg"><code class="docutils literal notranslate"><span class="pre">benjamini_hochberg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEResult"><code class="docutils literal notranslate"><span class="pre">GAGEResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEPreparation"><code class="docutils literal notranslate"><span class="pre">GAGEPreparation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEAnalysis"><code class="docutils literal notranslate"><span class="pre">GAGEAnalysis</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.io_loaders">Input adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_matrix"><code class="docutils literal notranslate"><span class="pre">read_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_de_table"><code class="docutils literal notranslate"><span class="pre">read_de_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_preranked"><code class="docutils literal notranslate"><span class="pre">read_preranked()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.gage"><code class="docutils literal notranslate"><span class="pre">gage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.gene_sets">Gene-set sourcing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.GeneSetCollection"><code class="docutils literal notranslate"><span class="pre">GeneSetCollection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_gmt"><code class="docutils literal notranslate"><span class="pre">load_gmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_msigdb"><code class="docutils literal notranslate"><span class="pre">load_msigdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_reactome"><code class="docutils literal notranslate"><span class="pre">load_reactome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_go"><code class="docutils literal notranslate"><span class="pre">load_go()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.GeneSetCache"><code class="docutils literal notranslate"><span class="pre">GeneSetCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.pathway_database_utils">Pathway / KEGG / GO retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#fixes-vs-the-original-draft">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#extensions-for-non-human-non-model-use">Extensions for non-human / non-model use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever"><code class="docutils literal notranslate"><span class="pre">KEGGPathwayRetriever</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.pathway_database_utils.GOGeneSetRetriever"><code class="docutils literal notranslate"><span class="pre">GOGeneSetRetriever</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.results_analysis">Results analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id1">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.esset_grp"><code class="docutils literal notranslate"><span class="pre">esset_grp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.ResultsComparator"><code class="docutils literal notranslate"><span class="pre">ResultsComparator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.GeneSetGrouper"><code class="docutils literal notranslate"><span class="pre">GeneSetGrouper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.SignificanceFilter"><code class="docutils literal notranslate"><span class="pre">SignificanceFilter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.tests">Statistical tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.tests.GeneSetTests"><code class="docutils literal notranslate"><span class="pre">GeneSetTests</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.visualization_utils">Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id2">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.ColorUtils"><code class="docutils literal notranslate"><span class="pre">ColorUtils</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.VennDiagram"><code class="docutils literal notranslate"><span class="pre">VennDiagram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.HeatmapPlotter"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.EnrichmentPlots"><code class="docutils literal notranslate"><span class="pre">EnrichmentPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.gene_id_utils">Gene-ID conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id3">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_id_utils.GeneIDConverter"><code class="docutils literal notranslate"><span class="pre">GeneIDConverter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_id_utils.build_kegg_symbol_map"><code class="docutils literal notranslate"><span class="pre">build_kegg_symbol_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.data_processing_utils">Data processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.DataTransformer"><code class="docutils literal notranslate"><span class="pre">DataTransformer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.GeneExtractor"><code class="docutils literal notranslate"><span class="pre">GeneExtractor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.GeneDataExporter"><code class="docutils literal notranslate"><span class="pre">GeneDataExporter</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">Changelog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id2">[1.2.0] — 2026</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id3">[1.0.0]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyGAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.GAGEResult.as_dict">as_dict() (pygage.core.GAGEResult method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.pathway_database_utils.GOGeneSetRetriever.ASPECT_TO_DOMAIN">ASPECT_TO_DOMAIN (pygage.pathway_database_utils.GOGeneSetRetriever attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.benjamini_hochberg">benjamini_hochberg() (in module pygage.core)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.visualization_utils.EnrichmentPlots.bubble_plot">bubble_plot() (pygage.visualization_utils.EnrichmentPlots static method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_id_utils.build_kegg_symbol_map">build_kegg_symbol_map() (in module pygage.gene_id_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.categorize_pathways">categorize_pathways() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.checksum">checksum (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.ColorUtils">ColorUtils (class in pygage.visualization_utils)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.DataTransformer.column_normalize">column_normalize() (pygage.data_processing_utils.DataTransformer static method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.results_analysis.ResultsComparator.compare_results">compare_results() (pygage.results_analysis.ResultsComparator static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.ColorUtils.create_colormap">create_colormap() (pygage.visualization_utils.ColorUtils static method)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.GeneDataExporter.create_scatterplot">create_scatterplot() (pygage.data_processing_utils.GeneDataExporter static method)</a>
+</li>
+      <li><a href="api.html#pygage.results_analysis.ResultsComparator.create_venn_comparison">create_venn_comparison() (pygage.results_analysis.ResultsComparator static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.data_processing_utils.DataTransformer">DataTransformer (class in pygage.data_processing_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.download_ko_gene_sets">download_ko_gene_sets() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_id_utils.GeneIDConverter.eg2sym">eg2sym() (pygage.gene_id_utils.GeneIDConverter method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.EnrichmentPlots.enrichment_heatmap">enrichment_heatmap() (pygage.visualization_utils.EnrichmentPlots static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.EnrichmentPlots">EnrichmentPlots (class in pygage.visualization_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.results_analysis.esset_grp">esset_grp() (in module pygage.results_analysis)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.GeneDataExporter.export_gene_data">export_gene_data() (pygage.data_processing_utils.GeneDataExporter static method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.extra">extra (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.GeneExtractor.extract_essential_genes">extract_essential_genes() (pygage.data_processing_utils.GeneExtractor static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.GAGEAnalysis.filter_significant">filter_significant() (pygage.core.GAGEAnalysis method)</a>
+
+      <ul>
+        <li><a href="api.html#pygage.results_analysis.SignificanceFilter.filter_significant">(pygage.results_analysis.SignificanceFilter static method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.filter_size">filter_size() (pygage.gene_sets.GeneSetCollection method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.io_loaders.gage">gage() (in module pygage.io_loaders)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEAnalysis">GAGEAnalysis (class in pygage.core)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEPreparation">GAGEPreparation (class in pygage.core)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEResult">GAGEResult (class in pygage.core)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.gene_sets">gene_sets (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.GeneDataExporter">GeneDataExporter (class in pygage.data_processing_utils)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.GeneExtractor">GeneExtractor (class in pygage.data_processing_utils)</a>
+</li>
+      <li><a href="api.html#pygage.gene_id_utils.GeneIDConverter">GeneIDConverter (class in pygage.gene_id_utils)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCache">GeneSetCache (class in pygage.gene_sets)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection">GeneSetCollection (class in pygage.gene_sets)</a>
+</li>
+      <li><a href="api.html#pygage.results_analysis.GeneSetGrouper">GeneSetGrouper (class in pygage.results_analysis)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.tests.GeneSetTests">GeneSetTests (class in pygage.tests)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.GOGeneSetRetriever.get_go_gene_sets">get_go_gene_sets() (pygage.pathway_database_utils.GOGeneSetRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.get_ko_gene_sets">get_ko_gene_sets() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.get_module_gene_sets">get_module_gene_sets() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_genes">get_pathway_genes() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_names">get_pathway_names() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.get_species_code">get_species_code() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.GOGeneSetRetriever">GOGeneSetRetriever (class in pygage.pathway_database_utils)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEResult.greater">greater (pygage.core.GAGEResult attribute)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.ColorUtils.greenred">greenred() (pygage.visualization_utils.ColorUtils static method)</a>
+</li>
+      <li><a href="api.html#pygage.results_analysis.GeneSetGrouper.group_gene_sets">group_gene_sets() (pygage.results_analysis.GeneSetGrouper static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.visualization_utils.HeatmapPlotter">HeatmapPlotter (class in pygage.visualization_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.KEGG_REST_BASE">KEGG_REST_BASE (pygage.pathway_database_utils.KEGGPathwayRetriever attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever">KEGGPathwayRetriever (class in pygage.pathway_database_utils)</a>
+</li>
+      <li><a href="api.html#pygage.tests.GeneSetTests.kolmogorov_smirnov_test">kolmogorov_smirnov_test() (pygage.tests.GeneSetTests static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.GAGEResult.less">less (pygage.core.GAGEResult attribute)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.list_all_kos">list_all_kos() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCache.list_keys">list_keys() (pygage.gene_sets.GeneSetCache method)</a>
+</li>
+      <li><a href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever.list_organisms">list_organisms() (pygage.pathway_database_utils.KEGGPathwayRetriever method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCache.load">load() (pygage.gene_sets.GeneSetCache method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_sets.load_gmt">load_gmt() (in module pygage.gene_sets)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.load_go">load_go() (in module pygage.gene_sets)</a>
+</li>
+      <li><a href="api.html#pygage.gene_id_utils.GeneIDConverter.load_mapping">load_mapping() (pygage.gene_id_utils.GeneIDConverter method)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.load_msigdb">load_msigdb() (in module pygage.gene_sets)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.load_reactome">load_reactome() (in module pygage.gene_sets)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.GAGEResult.meta">meta (pygage.core.GAGEResult attribute)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.metadata">metadata() (pygage.gene_sets.GeneSetCollection method)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api.html#module-pygage.core">pygage.core</a>
+</li>
+        <li><a href="api.html#module-pygage.data_processing_utils">pygage.data_processing_utils</a>
+</li>
+        <li><a href="api.html#module-pygage.gene_id_utils">pygage.gene_id_utils</a>
+</li>
+        <li><a href="api.html#module-pygage.gene_sets">pygage.gene_sets</a>
+</li>
+        <li><a href="api.html#module-pygage.io_loaders">pygage.io_loaders</a>
+</li>
+        <li><a href="api.html#module-pygage.pathway_database_utils">pygage.pathway_database_utils</a>
+</li>
+        <li><a href="api.html#module-pygage.results_analysis">pygage.results_analysis</a>
+</li>
+        <li><a href="api.html#module-pygage.tests">pygage.tests</a>
+</li>
+        <li><a href="api.html#module-pygage.visualization_utils">pygage.visualization_utils</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.n_sets">n_sets (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.visualization_utils.EnrichmentPlots.pathway_gene_colors">pathway_gene_colors() (pygage.visualization_utils.EnrichmentPlots static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.HeatmapPlotter.plot_clustered_heatmap">plot_clustered_heatmap() (pygage.visualization_utils.HeatmapPlotter static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.HeatmapPlotter.plot_heatmap">plot_heatmap() (pygage.visualization_utils.HeatmapPlotter static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.VennDiagram.plot_venn2">plot_venn2() (pygage.visualization_utils.VennDiagram static method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.VennDiagram.plot_venn3">plot_venn3() (pygage.visualization_utils.VennDiagram static method)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEPreparation.prepare_expression">prepare_expression() (pygage.core.GAGEPreparation static method)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.DataTransformer.prepare_paired_data">prepare_paired_data() (pygage.data_processing_utils.DataTransformer static method)</a>
+</li>
+      <li>
+    pygage.core
+
+      <ul>
+        <li><a href="api.html#module-pygage.core">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.data_processing_utils
+
+      <ul>
+        <li><a href="api.html#module-pygage.data_processing_utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.gene_id_utils
+
+      <ul>
+        <li><a href="api.html#module-pygage.gene_id_utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pygage.gene_sets
+
+      <ul>
+        <li><a href="api.html#module-pygage.gene_sets">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.io_loaders
+
+      <ul>
+        <li><a href="api.html#module-pygage.io_loaders">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.pathway_database_utils
+
+      <ul>
+        <li><a href="api.html#module-pygage.pathway_database_utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.results_analysis
+
+      <ul>
+        <li><a href="api.html#module-pygage.results_analysis">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.tests
+
+      <ul>
+        <li><a href="api.html#module-pygage.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    pygage.visualization_utils
+
+      <ul>
+        <li><a href="api.html#module-pygage.visualization_utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.io_loaders.read_de_table">read_de_table() (in module pygage.io_loaders)</a>
+</li>
+      <li><a href="api.html#pygage.io_loaders.read_matrix">read_matrix() (in module pygage.io_loaders)</a>
+</li>
+      <li><a href="api.html#pygage.io_loaders.read_preranked">read_preranked() (in module pygage.io_loaders)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.release">release (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEAnalysis.result_obj">result_obj (pygage.core.GAGEAnalysis attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.core.GAGEAnalysis.results">results (pygage.core.GAGEAnalysis attribute)</a>
+</li>
+      <li><a href="api.html#pygage.results_analysis.ResultsComparator">ResultsComparator (class in pygage.results_analysis)</a>
+</li>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.retrieved">retrieved (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.data_processing_utils.DataTransformer.row_normalize">row_normalize() (pygage.data_processing_utils.DataTransformer static method)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEAnalysis.run_gage">run_gage() (pygage.core.GAGEAnalysis method)</a>
+</li>
+      <li><a href="api.html#pygage.visualization_utils.EnrichmentPlots.running_enrichment">running_enrichment() (pygage.visualization_utils.EnrichmentPlots static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCache.save">save() (pygage.gene_sets.GeneSetCache method)</a>
+</li>
+      <li><a href="api.html#pygage.results_analysis.SignificanceFilter">SignificanceFilter (class in pygage.results_analysis)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEResult.significant">significant() (pygage.core.GAGEResult method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.gene_sets.GeneSetCollection.source">source (pygage.gene_sets.GeneSetCollection attribute)</a>
+</li>
+      <li><a href="api.html#pygage.core.GAGEResult.stats">stats (pygage.core.GAGEResult attribute)</a>
+</li>
+      <li><a href="api.html#pygage.gene_id_utils.GeneIDConverter.sym2eg">sym2eg() (pygage.gene_id_utils.GeneIDConverter method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.tests.GeneSetTests.t_test">t_test() (pygage.tests.GeneSetTests static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.visualization_utils.VennDiagram.venn_counts">venn_counts() (pygage.visualization_utils.VennDiagram static method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.visualization_utils.VennDiagram">VennDiagram (class in pygage.visualization_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#pygage.tests.GeneSetTests.z_test">z_test() (pygage.tests.GeneSetTests static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Richard A. White III, Jose L. Figueroa III (CC BY-NC 4.0).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

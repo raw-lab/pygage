@@ -1,0 +1,1747 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API reference &mdash; PyGAGE 1.2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b6192ffe" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Performance &amp; the Rust kernel" href="performance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyGAGE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-pypi">From PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-bioconda">From Bioconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-source">From source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verify">Verify</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#from-the-command-line">From the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">How GAGE works</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="method.html#preparation">1. Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#per-sample-gene-set-statistic">2. Per-sample gene-set statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#cross-sample-meta-summarisation">3. Cross-sample meta-summarisation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/inputs.html">Inputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#raw-expression-matrix">Raw expression matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#de-tables-deseq2-edger-limma">DE tables (DESeq2 / edgeR / limma)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pre-ranked-vector-fgsea-style">Pre-ranked vector (fgsea-style)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pandas-anndata">pandas / AnnData</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/genesets.html">Gene-set sourcing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-pathways-any-organism">KEGG pathways (any organism)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-orthology-species-agnostic">KEGG Orthology (species-agnostic)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#gene-ontology-gaf-obo-with-propagation">Gene Ontology (GAF + OBO, with propagation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#reactome">Reactome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#msigdb-any-gmt">MSigDB / any GMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#versioned-offline-cache">Versioned offline cache</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/running.html">Running GAGE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#typed-result">Typed result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#the-gage-convenience-function">The <code class="docutils literal notranslate"><span class="pre">gage()</span></code> convenience function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/results.html">Understanding the results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/results.html#collapsing-redundant-sets">Collapsing redundant sets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/visualization.html">Visualization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#run-gage">Run GAGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#download-kegg-gene-sets">Download KEGG gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#build-go-gene-sets">Build GO gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#compare-result-tables">Compare result tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#migration-from-the-1-0-0-scripts">Migration from the 1.0.0 scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validation.html">Validation / parity with gage R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance &amp; the Rust kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#optional-rust-pyo3-kernel-for-the-per-set-statistic-loop">Optional Rust/PyO3 kernel for the per-set statistic loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#when-it-is-worth-it">When it is worth it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#what-to-port">What to port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#correctness-gate-the-important-part">Correctness gate (the important part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#expected-speedup">Expected speedup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.core">Core engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.core.benjamini_hochberg"><code class="docutils literal notranslate"><span class="pre">benjamini_hochberg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.core.GAGEResult"><code class="docutils literal notranslate"><span class="pre">GAGEResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.core.GAGEPreparation"><code class="docutils literal notranslate"><span class="pre">GAGEPreparation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.core.GAGEAnalysis"><code class="docutils literal notranslate"><span class="pre">GAGEAnalysis</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.io_loaders">Input adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.io_loaders.read_matrix"><code class="docutils literal notranslate"><span class="pre">read_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.io_loaders.read_de_table"><code class="docutils literal notranslate"><span class="pre">read_de_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.io_loaders.read_preranked"><code class="docutils literal notranslate"><span class="pre">read_preranked()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.io_loaders.gage"><code class="docutils literal notranslate"><span class="pre">gage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.gene_sets">Gene-set sourcing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection"><code class="docutils literal notranslate"><span class="pre">GeneSetCollection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.load_gmt"><code class="docutils literal notranslate"><span class="pre">load_gmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.load_msigdb"><code class="docutils literal notranslate"><span class="pre">load_msigdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.load_reactome"><code class="docutils literal notranslate"><span class="pre">load_reactome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.load_go"><code class="docutils literal notranslate"><span class="pre">load_go()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_sets.GeneSetCache"><code class="docutils literal notranslate"><span class="pre">GeneSetCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.pathway_database_utils">Pathway / KEGG / GO retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fixes-vs-the-original-draft">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions-for-non-human-non-model-use">Extensions for non-human / non-model use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.pathway_database_utils.KEGGPathwayRetriever"><code class="docutils literal notranslate"><span class="pre">KEGGPathwayRetriever</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.pathway_database_utils.GOGeneSetRetriever"><code class="docutils literal notranslate"><span class="pre">GOGeneSetRetriever</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.results_analysis">Results analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.results_analysis.esset_grp"><code class="docutils literal notranslate"><span class="pre">esset_grp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.results_analysis.ResultsComparator"><code class="docutils literal notranslate"><span class="pre">ResultsComparator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.results_analysis.GeneSetGrouper"><code class="docutils literal notranslate"><span class="pre">GeneSetGrouper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.results_analysis.SignificanceFilter"><code class="docutils literal notranslate"><span class="pre">SignificanceFilter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.tests">Statistical tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.tests.GeneSetTests"><code class="docutils literal notranslate"><span class="pre">GeneSetTests</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.visualization_utils">Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.visualization_utils.ColorUtils"><code class="docutils literal notranslate"><span class="pre">ColorUtils</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.visualization_utils.VennDiagram"><code class="docutils literal notranslate"><span class="pre">VennDiagram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.visualization_utils.HeatmapPlotter"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.visualization_utils.EnrichmentPlots"><code class="docutils literal notranslate"><span class="pre">EnrichmentPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.gene_id_utils">Gene-ID conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_id_utils.GeneIDConverter"><code class="docutils literal notranslate"><span class="pre">GeneIDConverter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.gene_id_utils.build_kegg_symbol_map"><code class="docutils literal notranslate"><span class="pre">build_kegg_symbol_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pygage.data_processing_utils">Data processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.data_processing_utils.DataTransformer"><code class="docutils literal notranslate"><span class="pre">DataTransformer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.data_processing_utils.GeneExtractor"><code class="docutils literal notranslate"><span class="pre">GeneExtractor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pygage.data_processing_utils.GeneDataExporter"><code class="docutils literal notranslate"><span class="pre">GeneDataExporter</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">Changelog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id2">[1.2.0] — 2026</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id3">[1.0.0]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyGAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<section id="module-pygage.core">
+<span id="core-engine"></span><h2>Core engine<a class="headerlink" href="#module-pygage.core" title="Link to this heading"></a></h2>
+<p>GAGE core: a faithful Python port of the gage R stat engine.</p>
+<p>Ported directly from datapplab/gage (gagePrep.R, gs.tTest.R, gs.zTest.R,
+gs.KSTest.R, gageSum.R).  The per-gene-set statistic and the meta
+summarisation reproduce gage’s numbers (see tests/regression):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>gs.tTest per column j, set S (size n, present genes):</dt><dd><p>a  = var(S_j)/n ;  b = var(all_j)/n        # note: BOTH over n (gage)
+df = (a+b)^2 / (a^2/(n-1) + b^2/(n-1))
+stat = (mean(S_j) - mean(all_j)) * (a+b)^(-1/2)
+p_up = P(T_df &gt; stat) ;  p_down = P(T_df &lt; stat)</p>
+</dd>
+<dt>meta (default Stouffer): p.val = Phi( sum_j qnorm(p_j) / sqrt(nc) )</dt><dd><p>(Fisher/gamma alt) : p.val = pgamma(sum_j -log(p_j), shape=nc, lower=F)</p>
+</dd>
+</dl>
+<p>p.geomean = exp( -sum_j -log(p_j) / nc )
+stat.mean = mean_j stat_j ;  q.val = BH(p.val) within each direction</p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.core.benjamini_hochberg">
+<span class="sig-prename descclassname"><span class="pre">pygage.core.</span></span><span class="sig-name descname"><span class="pre">benjamini_hochberg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#benjamini_hochberg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.benjamini_hochberg" title="Link to this definition"></a></dt>
+<dd><p>BH FDR, matching R’s p.adjust(method=’BH’). NaNs are preserved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pvals</strong> (<em>ndarray</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.core.</span></span><span class="sig-name descname"><span class="pre">GAGEResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">greater</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">less</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Typed GAGE result (tidy access without leaving polars behind).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>greater</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>less</strong> (<em>DataFrame</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>stats</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>meta</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>object</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.greater">
+<span class="sig-name descname"><span class="pre">greater</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></span><a class="headerlink" href="#pygage.core.GAGEResult.greater" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.less">
+<span class="sig-name descname"><span class="pre">less</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#pygage.core.GAGEResult.less" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></span><a class="headerlink" href="#pygage.core.GAGEResult.stats" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.meta">
+<span class="sig-name descname"><span class="pre">meta</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#pygage.core.GAGEResult.meta" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEResult.as_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEResult.as_dict" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, <em>DataFrame</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.core.GAGEResult.significant">
+<span class="sig-name descname"><span class="pre">significant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEResult.significant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEResult.significant" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>use_q</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>DataFrame</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.core.GAGEPreparation">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.core.</span></span><span class="sig-name descname"><span class="pre">GAGEPreparation</span></span><a class="reference internal" href="_modules/pygage/core.html#GAGEPreparation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEPreparation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Per-gene fold-change / statistic preparation (gagePrep port).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.core.GAGEPreparation.prepare_expression">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">prepare_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'paired'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_logged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEPreparation.prepare_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEPreparation.prepare_expression" title="Link to this definition"></a></dt>
+<dd><p>Return a gene_col + per-comparison fold-change matrix.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ref_indices</span></code>/<code class="docutils literal notranslate"><span class="pre">samp_indices</span></code> are 0-based positions among the value
+columns (i.e. excluding <code class="docutils literal notranslate"><span class="pre">gene_col</span></code>), matching gage’s <code class="docutils literal notranslate"><span class="pre">ref</span></code>/<code class="docutils literal notranslate"><span class="pre">samp</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>ref_indices</strong> (<em>Sequence</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>samp_indices</strong> (<em>Sequence</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>comparison</strong> (<em>str</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+<li><p><strong>use_fold</strong> (<em>bool</em>)</p></li>
+<li><p><strong>input_logged</strong> (<em>bool</em>)</p></li>
+<li><p><strong>rank_test</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.core.GAGEAnalysis">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.core.</span></span><span class="sig-name descname"><span class="pre">GAGEAnalysis</span></span><a class="reference internal" href="_modules/pygage/core.html#GAGEAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEAnalysis" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEAnalysis.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#pygage.core.GAGEAnalysis.results" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.core.GAGEAnalysis.result_obj">
+<span class="sig-name descname"><span class="pre">result_obj</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#pygage.core.GAGEResult" title="pygage.core.GAGEResult"><span class="pre">GAGEResult</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#pygage.core.GAGEAnalysis.result_obj" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.core.GAGEAnalysis.run_gage">
+<span class="sig-name descname"><span class="pre">run_gage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_size_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'t-test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stouffer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_genes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_bh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_effect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leading_edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEAnalysis.run_gage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEAnalysis.run_gage" title="Link to this definition"></a></dt>
+<dd><p>Run GAGE. Returns dict with <code class="docutils literal notranslate"><span class="pre">greater</span></code> (+``less`` if same_dir) and <code class="docutils literal notranslate"><span class="pre">stats</span></code>.</p>
+<p>Parity: default (t-test + stouffer + BH) reproduces gage R.
+Extensions: <code class="docutils literal notranslate"><span class="pre">meta_method='fisher'</span></code>; <code class="docutils literal notranslate"><span class="pre">control_genes</span></code> (background from a
+control set rather than all genes); <code class="docutils literal notranslate"><span class="pre">global_bh</span></code> (BH across greater∪less);
+<code class="docutils literal notranslate"><span class="pre">compute_effect</span></code> (mean fold-change per set); <code class="docutils literal notranslate"><span class="pre">leading_edge</span></code> (member
+genes driving the signal); <code class="docutils literal notranslate"><span class="pre">permutations</span></code> (sample-label permutation
+null p-value); <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> (parallel over gene sets).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>set_size_range</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+<li><p><strong>test_method</strong> (<em>str</em>)</p></li>
+<li><p><strong>meta_method</strong> (<em>str</em>)</p></li>
+<li><p><strong>fdr_method</strong> (<em>str</em>)</p></li>
+<li><p><strong>control_genes</strong> (<em>Sequence</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>global_bh</strong> (<em>bool</em>)</p></li>
+<li><p><strong>compute_effect</strong> (<em>bool</em>)</p></li>
+<li><p><strong>leading_edge</strong> (<em>bool</em>)</p></li>
+<li><p><strong>permutations</strong> (<em>int</em>)</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em>)</p></li>
+<li><p><strong>random_state</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>DataFrame</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.core.GAGEAnalysis.filter_significant">
+<span class="sig-name descname"><span class="pre">filter_significant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/core.html#GAGEAnalysis.filter_significant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.core.GAGEAnalysis.filter_significant" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>use_q</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>DataFrame</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.io_loaders">
+<span id="input-adapters"></span><h2>Input adapters<a class="headerlink" href="#module-pygage.io_loaders" title="Link to this heading"></a></h2>
+<p>Input adapters: raw matrices, DE tables, pre-ranked vectors, pandas/AnnData.</p>
+<p>Most users arrive with a DESeq2/edgeR/limma result table or a single ranked
+statistic, not a raw expression matrix.  These helpers turn any of those into a
+gene_col + fold-change/statistic frame that <code class="docutils literal notranslate"><span class="pre">GAGEAnalysis.run_gage</span></code> consumes.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.io_loaders.read_matrix">
+<span class="sig-prename descclassname"><span class="pre">pygage.io_loaders.</span></span><span class="sig-name descname"><span class="pre">read_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/io_loaders.html#read_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.io_loaders.read_matrix" title="Link to this definition"></a></dt>
+<dd><p>Load a raw expression matrix (genes x samples) from a file or frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.io_loaders.read_de_table">
+<span class="sig-prename descclassname"><span class="pre">pygage.io_loaders.</span></span><span class="sig-name descname"><span class="pre">read_de_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log2FC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lfc_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/io_loaders.html#read_de_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.io_loaders.read_de_table" title="Link to this definition"></a></dt>
+<dd><p>Load a DESeq2/edgeR/limma-style DE table into a single-column ranked frame.</p>
+<p>Auto-detects gene, log2FoldChange, and stat columns by common aliases.
+<code class="docutils literal notranslate"><span class="pre">value</span></code> selects which per-gene statistic to rank on: <code class="docutils literal notranslate"><span class="pre">'log2FC'</span></code> (default,
+matches gage use.fold=TRUE) or <code class="docutils literal notranslate"><span class="pre">'stat'</span></code> (the Wald/t/LR statistic).
+Returns a frame with <code class="docutils literal notranslate"><span class="pre">gene_id</span></code> + one value column ready for run_gage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>value</strong> (<em>str</em>)</p></li>
+<li><p><strong>stat_col</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>lfc_col</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.io_loaders.read_preranked">
+<span class="sig-prename descclassname"><span class="pre">pygage.io_loaders.</span></span><span class="sig-name descname"><span class="pre">read_preranked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'score'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/io_loaders.html#read_preranked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.io_loaders.read_preranked" title="Link to this definition"></a></dt>
+<dd><p>Load a pre-ranked gene-&gt;score vector (fgsea-style) into a run_gage frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>] </em><em>| </em><em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>score_col</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.io_loaders.gage">
+<span class="sig-prename descclassname"><span class="pre">pygage.io_loaders.</span></span><span class="sig-name descname"><span class="pre">gage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'paired'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'t-test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stouffer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_size_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_logged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prepared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tidy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">run_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/io_loaders.html#gage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.io_loaders.gage" title="Link to this definition"></a></dt>
+<dd><p>One-call GAGE for a raw matrix, a prepared frame, or a DE/pre-ranked table.</p>
+<ul class="simple">
+<li><p>raw matrix + ref_indices/samp_indices -&gt; gagePrep then run_gage</p></li>
+<li><p>a single-column frame (DE/pre-ranked, or <code class="docutils literal notranslate"><span class="pre">prepared=True</span></code>) -&gt; run_gage directly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> may be polars, pandas, AnnData, dict, or a file path.</p></li>
+</ul>
+<p>Returns a tidy polars frame (direction-labelled) by default, else the
+greater/less/stats dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>ref_indices</strong> (<em>Sequence</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>samp_indices</strong> (<em>Sequence</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>comparison</strong> (<em>str</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+<li><p><strong>test_method</strong> (<em>str</em>)</p></li>
+<li><p><strong>meta_method</strong> (<em>str</em>)</p></li>
+<li><p><strong>input_logged</strong> (<em>bool</em>)</p></li>
+<li><p><strong>prepared</strong> (<em>bool</em>)</p></li>
+<li><p><strong>tidy</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pygage.gene_sets">
+<span id="gene-set-sourcing"></span><h2>Gene-set sourcing<a class="headerlink" href="#module-pygage.gene_sets" title="Link to this heading"></a></h2>
+<p>Gene-set sourcing: GMT (MSigDB), Reactome, GO/OBO + a versioned local cache.</p>
+<p>Every loader returns a <code class="docutils literal notranslate"><span class="pre">GeneSetCollection</span></code> carrying the sets plus provenance
+metadata (source, release, retrieval date, checksum) so a run is reproducible
+and the gene-set release can be stamped into results.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">GeneSetCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">'Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">List[str]]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'str'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'str'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retrieved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'str'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'str'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">'Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]'</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>source</strong> (<em>str</em>)</p></li>
+<li><p><strong>release</strong> (<em>str</em>)</p></li>
+<li><p><strong>retrieved</strong> (<em>str</em>)</p></li>
+<li><p><strong>n_sets</strong> (<em>int</em>)</p></li>
+<li><p><strong>checksum</strong> (<em>str</em>)</p></li>
+<li><p><strong>extra</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.gene_sets">
+<span class="sig-name descname"><span class="pre">gene_sets</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.gene_sets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.source">
+<span class="sig-name descname"><span class="pre">source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.source" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.release" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.retrieved">
+<span class="sig-name descname"><span class="pre">retrieved</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.retrieved" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.n_sets">
+<span class="sig-name descname"><span class="pre">n_sets</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.n_sets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.checksum">
+<span class="sig-name descname"><span class="pre">checksum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.checksum" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.extra" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCollection.metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.metadata" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCollection.filter_size">
+<span class="sig-name descname"><span class="pre">filter_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCollection.filter_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCollection.filter_size" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lo</strong> (<em>int</em>)</p></li>
+<li><p><strong>hi</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.gene_sets.load_gmt">
+<span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">load_gmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GMT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unknown'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#load_gmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.load_gmt" title="Link to this definition"></a></dt>
+<dd><p>Parse a GMT file: each line = name&lt;TAB&gt;description&lt;TAB&gt;gene1&lt;TAB&gt;gene2…</p>
+<p>Works directly with MSigDB downloads (hallmark.gmt, c2.cp.reactome.gmt,
+c5.go.bp.gmt, etc.).  <code class="docutils literal notranslate"><span class="pre">.gz</span></code> supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em>)</p></li>
+<li><p><strong>release</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.gene_sets.load_msigdb">
+<span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">load_msigdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'H'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#load_msigdb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.load_msigdb" title="Link to this definition"></a></dt>
+<dd><p>Load an MSigDB collection GMT and tag the collection code (H/C2/C5…).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.gene_sets.load_reactome">
+<span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">load_reactome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gmt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Homo</span> <span class="pre">sapiens'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#load_reactome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.load_reactome" title="Link to this definition"></a></dt>
+<dd><p>Load Reactome gene sets.</p>
+<p><code class="docutils literal notranslate"><span class="pre">id_type='gmt'</span></code>: a ReactomePathways.gmt export (name&lt;TAB&gt;id&lt;TAB&gt;genes…).
+<code class="docutils literal notranslate"><span class="pre">id_type='ncbi2reactome'</span></code>: the NCBI2Reactome_All_Levels.txt mapping
+(gene&lt;TAB&gt;pathwayId&lt;TAB&gt;url&lt;TAB&gt;pathwayName&lt;TAB&gt;evidence&lt;TAB&gt;species);
+rows are grouped into pathwayId -&gt; genes for the requested species.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_type</strong> (<em>str</em>)</p></li>
+<li><p><strong>species</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.gene_sets.load_go">
+<span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">load_go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gaf_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obo_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'symbol'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_iea</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propagate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#load_go"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.load_go" title="Link to this definition"></a></dt>
+<dd><p>Build GO gene sets from a GAF (+ optional OBO for names / propagation).</p>
+<p><code class="docutils literal notranslate"><span class="pre">aspect</span></code> filters to a single domain: ‘BP’/’MF’/’CC’ (None = all).
+<code class="docutils literal notranslate"><span class="pre">propagate</span></code> (needs OBO) rolls annotations up the is_a/part_of DAG so a
+gene annotated to a child term also counts for its ancestors (as most GO
+enrichment tools do).  Without an OBO, only direct annotations are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obo_path</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>aspect</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>id_field</strong> (<em>str</em>)</p></li>
+<li><p><strong>include_iea</strong> (<em>bool</em>)</p></li>
+<li><p><strong>propagate</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCache">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.gene_sets.</span></span><span class="sig-name descname"><span class="pre">GeneSetCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'~/.cache/pygage/gene_sets'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCache" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>On-disk cache of GeneSetCollections keyed by name; offline-reproducible.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCache.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coll</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCache.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCache.save" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>coll</strong> (<a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Path</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCache.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCache.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCache.load" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pygage.gene_sets.GeneSetCollection" title="pygage.gene_sets.GeneSetCollection"><em>GeneSetCollection</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_sets.GeneSetCache.list_keys">
+<span class="sig-name descname"><span class="pre">list_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_sets.html#GeneSetCache.list_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_sets.GeneSetCache.list_keys" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.pathway_database_utils">
+<span id="pathway-kegg-go-retrieval"></span><h2>Pathway / KEGG / GO retrieval<a class="headerlink" href="#module-pygage.pathway_database_utils" title="Link to this heading"></a></h2>
+<p>Pathway and Gene Set Database Utilities (corrected + extended).</p>
+<section id="fixes-vs-the-original-draft">
+<h3>Fixes vs. the original draft<a class="headerlink" href="#fixes-vs-the-original-draft" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>KEGG links are fetched with a single bulk <code class="docutils literal notranslate"><span class="pre">/link/&lt;org&gt;/pathway</span></code> call
+instead of one HTTP request per pathway (the old <code class="docutils literal notranslate"><span class="pre">pathway:&lt;org&gt;...</span></code> URL
+used the wrong entry prefix – it must be <code class="docutils literal notranslate"><span class="pre">path:</span></code> – so it returned
+nothing, and the N+1 request pattern hit KEGG’s rate limits).</p></li>
+<li><p>Pathway-list and link parsing strip the <code class="docutils literal notranslate"><span class="pre">path:</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;org&gt;:</span></code> prefixes
+robustly, tolerating both the modern (<code class="docutils literal notranslate"><span class="pre">hsa00010</span></code>) and legacy
+(<code class="docutils literal notranslate"><span class="pre">path:hsa00010</span></code>) formats.</p></li>
+<li><p>Entrez conversion tolerates either column order and is optional/robust.</p></li>
+<li><p>GO/GAF parsing uses the Aspect column (P/F/C -&gt; BP/MF/CC) for real
+categorisation and honours the <code class="docutils literal notranslate"><span class="pre">NOT</span></code> qualifier; it no longer mislabels the
+gene’s name as the GO-term name.</p></li>
+</ul>
+</section>
+<section id="extensions-for-non-human-non-model-use">
+<h3>Extensions for non-human / non-model use<a class="headerlink" href="#extensions-for-non-human-non-model-use" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_genes" title="pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_genes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KEGGPathwayRetriever.get_pathway_genes()</span></code></a> works for any KEGG organism
+code (mmu, eco, ath, dme, sce, …), not just <code class="docutils literal notranslate"><span class="pre">hsa</span></code>.</p></li>
+<li><p><a class="reference internal" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_ko_gene_sets" title="pygage.pathway_database_utils.KEGGPathwayRetriever.get_ko_gene_sets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KEGGPathwayRetriever.get_ko_gene_sets()</span></code></a> builds <em>species-agnostic</em>
+gene sets keyed by KEGG Orthology (KO) IDs – the right tool for
+metagenomes, viromes, phages and non-model organisms that lack a dedicated
+KEGG genome.  Annotate your genes with KO IDs (KofamScan / MetaCerberus /
+eggNOG-mapper) and feed those to GAGE.</p></li>
+<li><p><a class="reference internal" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_module_gene_sets" title="pygage.pathway_database_utils.KEGGPathwayRetriever.get_module_gene_sets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KEGGPathwayRetriever.get_module_gene_sets()</span></code></a> exposes KEGG MODULE gene
+sets (organism-specific or KO-based).</p></li>
+</ul>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.pathway_database_utils.</span></span><span class="sig-name descname"><span class="pre">KEGGPathwayRetriever</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.34</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Retrieve KEGG pathway / module / KO gene sets for any organism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cache_dir</strong> (<em>Optional</em><em>[</em><em>Path</em><em>]</em>)</p></li>
+<li><p><strong>retries</strong> (<em>int</em>)</p></li>
+<li><p><strong>pause</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.KEGG_REST_BASE">
+<span class="sig-name descname"><span class="pre">KEGG_REST_BASE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://rest.kegg.jp'</span></span><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.KEGG_REST_BASE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.list_organisms">
+<span class="sig-name descname"><span class="pre">list_organisms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.list_organisms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.list_organisms" title="Link to this definition"></a></dt>
+<dd><p>Return {org_code: definition} for every KEGG organism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.get_species_code">
+<span class="sig-name descname"><span class="pre">get_species_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsa'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.get_species_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_species_code" title="Link to this definition"></a></dt>
+<dd><p>Validate a KEGG organism code and return its record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>species</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_names">
+<span class="sig-name descname"><span class="pre">get_pathway_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsa'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.get_pathway_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_names" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>species</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_genes">
+<span class="sig-name descname"><span class="pre">get_pathway_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsa'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kegg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.get_pathway_genes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_pathway_genes" title="Link to this definition"></a></dt>
+<dd><p>Return pathway gene sets for a KEGG organism (any species).</p>
+<p>Uses one bulk link call for all gene&lt;-&gt;pathway edges.</p>
+<p>id_type: <code class="docutils literal notranslate"><span class="pre">kegg</span></code> (native <code class="docutils literal notranslate"><span class="pre">&lt;org&gt;:gene</span></code> IDs, prefix stripped) or
+<code class="docutils literal notranslate"><span class="pre">entrez</span></code> (NCBI Gene IDs via <code class="docutils literal notranslate"><span class="pre">/conv</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> (<em>str</em>)</p></li>
+<li><p><strong>id_type</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.get_ko_gene_sets">
+<span class="sig-name descname"><span class="pre">get_ko_gene_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pathway'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.get_ko_gene_sets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_ko_gene_sets" title="Link to this definition"></a></dt>
+<dd><p>Build KO-keyed gene sets from KEGG reference pathways or modules.</p>
+<p>These sets are organism-independent: each set lists the KO IDs
+(e.g. <code class="docutils literal notranslate"><span class="pre">K00844</span></code>) assigned to a reference map (<code class="docutils literal notranslate"><span class="pre">map#####</span></code>) or module.
+Annotate query genes with KO IDs (KofamScan / MetaCerberus / eggNOG)
+and run GAGE directly against these – ideal for metagenomes, viromes,
+phages and non-model organisms.</p>
+<p>reference: <code class="docutils literal notranslate"><span class="pre">pathway</span></code> or <code class="docutils literal notranslate"><span class="pre">module</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reference</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.list_all_kos">
+<span class="sig-name descname"><span class="pre">list_all_kos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.list_all_kos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.list_all_kos" title="Link to this definition"></a></dt>
+<dd><p>Return <strong>every</strong> KEGG Orthology entry: {KO_id: description}.</p>
+<p>e.g. <code class="docutils literal notranslate"><span class="pre">{'K00001':</span> <span class="pre">'E1.1.1.1,</span> <span class="pre">adh;</span> <span class="pre">alcohol</span> <span class="pre">dehydrogenase</span> <span class="pre">[EC:1.1.1.1]',</span> <span class="pre">...}</span></code>.
+This is the full KO namespace (~26k entries) used to annotate genes for
+species-agnostic analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.download_ko_gene_sets">
+<span class="sig-name descname"><span class="pre">download_ko_gene_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pathway'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ko'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.download_ko_gene_sets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.download_ko_gene_sets" title="Link to this definition"></a></dt>
+<dd><p>Download KO gene sets and write them to <code class="docutils literal notranslate"><span class="pre">output_file</span></code> (JSON).</p>
+<p>Bundles the KO gene sets, their names, categories, and the full KO list
+with provenance (source + retrieval date) so the download is reproducible
+and can be re-loaded offline.  Progress is logged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> (<em>Path</em>)</p></li>
+<li><p><strong>reference</strong> (<em>str</em>)</p></li>
+<li><p><strong>id_field</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.get_module_gene_sets">
+<span class="sig-name descname"><span class="pre">get_module_gene_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsa'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.get_module_gene_sets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.get_module_gene_sets" title="Link to this definition"></a></dt>
+<dd><p>KEGG MODULE gene sets for a given organism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>species</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.KEGGPathwayRetriever.categorize_pathways">
+<span class="sig-name descname"><span class="pre">categorize_pathways</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathway_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#KEGGPathwayRetriever.categorize_pathways"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.KEGGPathwayRetriever.categorize_pathways" title="Link to this definition"></a></dt>
+<dd><p>Split pathways into GAGE-style groups.</p>
+<p>Preferred: parse the KEGG pathway BRITE hierarchy (br08901) so the
+grouping matches KEGG’s own top-level categories.  If that fetch fails,
+fall back to the pathway-number ranges KEGG uses to lay out the BRITE
+(Metabolism 00/01, Genetic info 03, Env/Cellular/Organismal signalling
+02/04, Human Diseases 05, Drug development 07).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pathway_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>List</em>[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.GOGeneSetRetriever">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.pathway_database_utils.</span></span><span class="sig-name descname"><span class="pre">GOGeneSetRetriever</span></span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#GOGeneSetRetriever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.GOGeneSetRetriever" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Retrieve Gene Ontology gene sets from a GAF annotation file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.GOGeneSetRetriever.ASPECT_TO_DOMAIN">
+<span class="sig-name descname"><span class="pre">ASPECT_TO_DOMAIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'C':</span> <span class="pre">'CC',</span> <span class="pre">'F':</span> <span class="pre">'MF',</span> <span class="pre">'P':</span> <span class="pre">'BP'}</span></span><a class="headerlink" href="#pygage.pathway_database_utils.GOGeneSetRetriever.ASPECT_TO_DOMAIN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.pathway_database_utils.GOGeneSetRetriever.get_go_gene_sets">
+<span class="sig-name descname"><span class="pre">get_go_gene_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotation_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'symbol'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_iea</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obo_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/pathway_database_utils.html#GOGeneSetRetriever.get_go_gene_sets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.pathway_database_utils.GOGeneSetRetriever.get_go_gene_sets" title="Link to this definition"></a></dt>
+<dd><p>Parse a GAF file into GO gene sets, correctly categorised by domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>annotation_file</strong> (<em>Path</em>) – GAF 2.x file (any species; download the matching
+organism’s GAF from the GO or an organism annotation DB).</p></li>
+<li><p><strong>id_field</strong> (<em>str</em>) – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> (col 3, default) or <code class="docutils literal notranslate"><span class="pre">object_id</span></code> (col 2).</p></li>
+<li><p><strong>include_iea</strong> (<em>bool</em>) – keep electronic (IEA) annotations if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>obo_file</strong> (<em>Path</em><em> | </em><em>None</em>) – optional go-basic.obo to attach real GO-term names
+(the GAF itself does <em>not</em> contain GO-term names).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">gene_sets</span></code> (GO ID -&gt; genes), <code class="docutils literal notranslate"><span class="pre">go_categories</span></code> (BP/MF/CC -&gt;
+GO IDs) and <code class="docutils literal notranslate"><span class="pre">go_names</span></code> (GO ID -&gt; term name, empty unless
+<code class="docutils literal notranslate"><span class="pre">obo_file</span></code> is given).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.results_analysis">
+<span id="results-analysis"></span><h2>Results analysis<a class="headerlink" href="#module-pygage.results_analysis" title="Link to this heading"></a></h2>
+<p>GAGE Results Analysis and Comparison (corrected).</p>
+<section id="id1">
+<h3>Fixes vs. the original draft<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">compare_results</span></code> used <code class="docutils literal notranslate"><span class="pre">how='outer'</span></code> (deprecated -&gt; removed in polars);
+now uses <code class="docutils literal notranslate"><span class="pre">how='full'</span></code> consistently.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SignificanceFilter.filter_significant</span></code> (dual_sig == 1) tried to vstack the
+greater/less frames whose p/q columns have different names, raising a
+ShapeError.  Columns are now aligned to a common <code class="docutils literal notranslate"><span class="pre">score</span></code> before concat.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">group_gene_sets</span></code> restricts the hypergeometric universe and set sizes to
+genes actually measured, so the overlap test can’t receive n &gt; N.</p></li>
+</ul>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.results_analysis.esset_grp">
+<span class="sig-prename descclassname"><span class="pre">pygage.results_analysis.</span></span><span class="sig-name descname"><span class="pre">esset_grp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test4up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/results_analysis.html#esset_grp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.esset_grp" title="Link to this definition"></a></dt>
+<dd><p>Faithful port of gage’s <code class="docutils literal notranslate"><span class="pre">esset.grp</span></code>: collapse redundant gene sets.</p>
+<p>Redundancy is defined on <strong>core genes</strong> (set genes whose mean fold-change
+exceeds one SD of the gene-mean distribution in the direction of interest),
+tested for overlap against the pool of <strong>essential genes</strong> (mean fc beyond
+2 SD) via the hypergeometric <code class="docutils literal notranslate"><span class="pre">phyper</span></code> upper tail.  Sets whose overlap
+p-value &lt; <code class="docutils literal notranslate"><span class="pre">pc</span></code> are edges; connected components are the redundant groups.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">groups</span></code> (representative -&gt; members), <code class="docutils literal notranslate"><span class="pre">core_genes</span></code> per set, and
+<code class="docutils literal notranslate"><span class="pre">essential_genes</span></code>.  Mirrors gage’s use of the p-value (not q-value) by
+default for stable non-redundant selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>test4up</strong> (<em>bool</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+<li><p><strong>cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>use_q</strong> (<em>bool</em>)</p></li>
+<li><p><strong>pc</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.results_analysis.ResultsComparator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.results_analysis.</span></span><span class="sig-name descname"><span class="pre">ResultsComparator</span></span><a class="reference internal" href="_modules/pygage/results_analysis.html#ResultsComparator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.ResultsComparator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Compare enrichment results across multiple datasets.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.results_analysis.ResultsComparator.compare_results">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">compare_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/results_analysis.html#ResultsComparator.compare_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.ResultsComparator.compare_results" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_files</strong> (<em>List</em><em>[</em><em>Path</em><em>]</em>)</p></li>
+<li><p><strong>sample_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>q_cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.results_analysis.ResultsComparator.create_venn_comparison">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create_venn_comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/results_analysis.html#ResultsComparator.create_venn_comparison"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.ResultsComparator.create_venn_comparison" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_files</strong> (<em>List</em><em>[</em><em>Path</em><em>]</em>)</p></li>
+<li><p><strong>sample_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>q_cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.results_analysis.GeneSetGrouper">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.results_analysis.</span></span><span class="sig-name descname"><span class="pre">GeneSetGrouper</span></span><a class="reference internal" href="_modules/pygage/results_analysis.html#GeneSetGrouper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.GeneSetGrouper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Group overlapping significant gene sets by shared membership.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.results_analysis.GeneSetGrouper.group_gene_sets">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">group_gene_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/results_analysis.html#GeneSetGrouper.group_gene_sets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.GeneSetGrouper.group_gene_sets" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>p_cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>overlap_cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>List</em>[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.results_analysis.SignificanceFilter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.results_analysis.</span></span><span class="sig-name descname"><span class="pre">SignificanceFilter</span></span><a class="reference internal" href="_modules/pygage/results_analysis.html#SignificanceFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.SignificanceFilter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Filter significant gene sets from GAGE results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.results_analysis.SignificanceFilter.filter_significant">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">filter_significant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dual_sig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/results_analysis.html#SignificanceFilter.filter_significant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.results_analysis.SignificanceFilter.filter_significant" title="Link to this definition"></a></dt>
+<dd><p>Filter results; <code class="docutils literal notranslate"><span class="pre">dual_sig</span></code> controls two-direction handling.</p>
+<p>0 = exclusive (drop sets significant in both directions)
+1 = keep the better-scoring direction per gene set
+2 = keep both directions (default)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>DataFrame</em><em>]</em>)</p></li>
+<li><p><strong>cutoff</strong> (<em>float</em>)</p></li>
+<li><p><strong>use_q</strong> (<em>bool</em>)</p></li>
+<li><p><strong>dual_sig</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, <em>DataFrame</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.tests">
+<span id="statistical-tests"></span><h2>Statistical tests<a class="headerlink" href="#module-pygage.tests" title="Link to this heading"></a></h2>
+<p>Per-test gene-set statistics, delegating to the gage-faithful core engine.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GeneSetTests</span></code> is a thin, lower-level view over <code class="docutils literal notranslate"><span class="pre">core.GAGEAnalysis</span></code> so the
+three saaTests (t / z / KS) return <strong>exactly</strong> the numbers gage R produces
+(verified to ~1e-14 in tests/test_regression_gage.py).  Historically this module
+carried its own t-test whose background variance term used the set size for one
+term and the background size for the other; that has been replaced by
+delegation, because gage’s definition uses the <em>set</em> size for the background
+term (<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">s/length(ix)</span></code> in gs.tTest.R) – and matching gage is the point.</p>
+<p>Output schema per set: gene_set, set_size, statistic (= mean per-sample stat),
+p_greater, p_less.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.tests.GeneSetTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.tests.</span></span><span class="sig-name descname"><span class="pre">GeneSetTests</span></span><a class="reference internal" href="_modules/pygage/tests.html#GeneSetTests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.tests.GeneSetTests" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Set-vs-array-background tests (t / z / KS), numerically identical to gage.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.tests.GeneSetTests.t_test">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">t_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_size_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/tests.html#GeneSetTests.t_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.tests.GeneSetTests.t_test" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>set_size_range</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.tests.GeneSetTests.z_test">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">z_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_size_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/tests.html#GeneSetTests.z_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.tests.GeneSetTests.z_test" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>set_size_range</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.tests.GeneSetTests.kolmogorov_smirnov_test">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">kolmogorov_smirnov_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_size_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/tests.html#GeneSetTests.kolmogorov_smirnov_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.tests.GeneSetTests.kolmogorov_smirnov_test" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_sets</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>set_size_range</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>same_dir</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[str, object]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.visualization_utils">
+<span id="visualization"></span><h2>Visualization<a class="headerlink" href="#module-pygage.visualization_utils" title="Link to this heading"></a></h2>
+<p>Visualization Utilities (corrected).</p>
+<section id="id2">
+<h3>Fixes vs. the original draft<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_clustered_heatmap</span></code> no longer calls a hard-coded
+<code class="docutils literal notranslate"><span class="pre">set_index(&quot;gene_id&quot;)</span></code> that raised a KeyError whenever the matrix had no
+such column; row labels are applied directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_heatmap</span></code> no longer defaults row labels to the <em>column</em> names.</p></li>
+</ul>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.visualization_utils.ColorUtils">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.visualization_utils.</span></span><span class="sig-name descname"><span class="pre">ColorUtils</span></span><a class="reference internal" href="_modules/pygage/visualization_utils.html#ColorUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.ColorUtils" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.ColorUtils.create_colormap">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#ColorUtils.create_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.ColorUtils.create_colormap" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>low</strong> (<em>str</em>)</p></li>
+<li><p><strong>mid</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>high</strong> (<em>str</em>)</p></li>
+<li><p><strong>n</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>LinearSegmentedColormap</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.ColorUtils.greenred">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">greenred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#ColorUtils.greenred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.ColorUtils.greenred" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>LinearSegmentedColormap</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.visualization_utils.VennDiagram">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.visualization_utils.</span></span><span class="sig-name descname"><span class="pre">VennDiagram</span></span><a class="reference internal" href="_modules/pygage/visualization_utils.html#VennDiagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.VennDiagram" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.VennDiagram.venn_counts">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">venn_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#VennDiagram.venn_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.VennDiagram.venn_counts" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>include</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.VennDiagram.plot_venn2">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">plot_venn2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#VennDiagram.plot_venn2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.VennDiagram.plot_venn2" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>counts</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.VennDiagram.plot_venn3">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">plot_venn3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">10)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#VennDiagram.plot_venn3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.VennDiagram.plot_venn3" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>counts</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.visualization_utils.HeatmapPlotter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.visualization_utils.</span></span><span class="sig-name descname"><span class="pre">HeatmapPlotter</span></span><a class="reference internal" href="_modules/pygage/visualization_utils.html#HeatmapPlotter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.HeatmapPlotter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.HeatmapPlotter.plot_heatmap">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">plot_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RdYlGn_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#HeatmapPlotter.plot_heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.HeatmapPlotter.plot_heatmap" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em><em> | </em><em>ndarray</em>)</p></li>
+<li><p><strong>row_labels</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>col_labels</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>cmap</strong> (<em>str</em>)</p></li>
+<li><p><strong>vmin</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>vmax</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>center</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.HeatmapPlotter.plot_clustered_heatmap">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">plot_clustered_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RdYlGn_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(12,</span> <span class="pre">10)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#HeatmapPlotter.plot_clustered_heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.HeatmapPlotter.plot_clustered_heatmap" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em><em> | </em><em>ndarray</em>)</p></li>
+<li><p><strong>row_labels</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>col_labels</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>cmap</strong> (<em>str</em>)</p></li>
+<li><p><strong>vmin</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>vmax</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.visualization_utils.EnrichmentPlots">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.visualization_utils.</span></span><span class="sig-name descname"><span class="pre">EnrichmentPlots</span></span><a class="reference internal" href="_modules/pygage/visualization_utils.html#EnrichmentPlots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.EnrichmentPlots" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Publication-style views of GAGE results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.EnrichmentPlots.bubble_plot">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bubble_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stat_mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'q_val'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'set_size'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_set'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Enriched</span> <span class="pre">gene</span> <span class="pre">sets'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#EnrichmentPlots.bubble_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.EnrichmentPlots.bubble_plot" title="Link to this definition"></a></dt>
+<dd><p>Dot plot: x = stat.mean, colour = -log10(q), size = set_size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>top_n</strong> (<em>int</em>)</p></li>
+<li><p><strong>stat_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>q_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>size_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>name_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.EnrichmentPlots.enrichment_heatmap">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">enrichment_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_by_condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stat_mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'q_val'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_set'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gene-set</span> <span class="pre">enrichment</span> <span class="pre">across</span> <span class="pre">conditions'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#EnrichmentPlots.enrichment_heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.EnrichmentPlots.enrichment_heatmap" title="Link to this definition"></a></dt>
+<dd><p>Heatmap of a statistic per gene set (rows) x condition (cols).</p>
+<p><code class="docutils literal notranslate"><span class="pre">results_by_condition</span></code> maps condition name -&gt; GAGE greater/less frame.
+Rows are the union of the top-N sets per condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_by_condition</strong> (<em>dict</em>)</p></li>
+<li><p><strong>value</strong> (<em>str</em>)</p></li>
+<li><p><strong>top_n</strong> (<em>int</em>)</p></li>
+<li><p><strong>q_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>name_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.EnrichmentPlots.running_enrichment">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">running_enrichment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranked</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'score'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#EnrichmentPlots.running_enrichment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.EnrichmentPlots.running_enrichment" title="Link to this definition"></a></dt>
+<dd><p>GSEA-style weighted running-enrichment plot for one gene set.</p>
+<p>Ranks genes by <code class="docutils literal notranslate"><span class="pre">score_col</span></code> (descending), walks the list accumulating a
+weighted hit / miss running sum, and returns the enrichment score (ES)
+and leading-edge genes.  Complements pygage’s KS mode (gs.KSTest).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ranked</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_set</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>score_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>weight</strong> (<em>float</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.visualization_utils.EnrichmentPlots.pathway_gene_colors">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pathway_gene_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathway_genes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_changes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Pathway</span> <span class="pre">member</span> <span class="pre">fold</span> <span class="pre">changes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/visualization_utils.html#EnrichmentPlots.pathway_gene_colors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.visualization_utils.EnrichmentPlots.pathway_gene_colors" title="Link to this definition"></a></dt>
+<dd><p>Pathview-style colouring of a pathway’s member genes by fold change.</p>
+<p>Produces a colour per gene (RdBu_r on log2FC) and a compact grid figure.
+Returns the gene-&gt;hex-colour map so the same colours can drive a KGML
+overlay in your existing Pathview/SBGNview pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pathway_genes</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>fold_changes</strong> (<em>dict</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em>)</p></li>
+<li><p><strong>vmax</strong> (<em>float</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pygage.gene_id_utils">
+<span id="gene-id-conversion"></span><h2>Gene-ID conversion<a class="headerlink" href="#module-pygage.gene_id_utils" title="Link to this heading"></a></h2>
+<p>Gene ID Conversion Utilities (corrected).</p>
+<section id="id3">
+<h3>Fixes vs. the original draft<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eg2sym</span></code> / <code class="docutils literal notranslate"><span class="pre">sym2eg</span></code> now return what the signature promises – a list of
+optional strings aligned to the input – with an opt-in <code class="docutils literal notranslate"><span class="pre">as_frame=True</span></code> for
+the two-column DataFrame.  (The old code always returned a DataFrame,
+breaking any caller that indexed the result as a list.)</p></li>
+<li><p>A missing bundled mapping file no longer raises on construction; the object
+is created empty and a clear error is raised only if a conversion is
+attempted without a mapping.  A helper can build the Entrez&lt;-&gt;symbol map
+from KEGG for any species so the tool is not human-only.</p></li>
+</ul>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.gene_id_utils.GeneIDConverter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.gene_id_utils.</span></span><span class="sig-name descname"><span class="pre">GeneIDConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_id_utils.html#GeneIDConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_id_utils.GeneIDConverter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Convert between gene IDs and symbols using a two-column mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping_file</strong> (<em>Optional</em><em>[</em><em>Path</em><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_id_utils.GeneIDConverter.load_mapping">
+<span class="sig-name descname"><span class="pre">load_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_id_utils.html#GeneIDConverter.load_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_id_utils.GeneIDConverter.load_mapping" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping_file</strong> (<em>Path</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_id_utils.GeneIDConverter.eg2sym">
+<span class="sig-name descname"><span class="pre">eg2sym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entrez_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_id_utils.html#GeneIDConverter.eg2sym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_id_utils.GeneIDConverter.eg2sym" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entrez_ids</strong> (<em>List</em><em> | </em><em>Series</em>)</p></li>
+<li><p><strong>as_frame</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>List</em>[str | None] | <em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.gene_id_utils.GeneIDConverter.sym2eg">
+<span class="sig-name descname"><span class="pre">sym2eg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_id_utils.html#GeneIDConverter.sym2eg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_id_utils.GeneIDConverter.sym2eg" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>List</em><em> | </em><em>Series</em>)</p></li>
+<li><p><strong>as_frame</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>List</em>[str | None] | <em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pygage.gene_id_utils.build_kegg_symbol_map">
+<span class="sig-prename descclassname"><span class="pre">pygage.gene_id_utils.</span></span><span class="sig-name descname"><span class="pre">build_kegg_symbol_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsa'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/gene_id_utils.html#build_kegg_symbol_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.gene_id_utils.build_kegg_symbol_map" title="Link to this definition"></a></dt>
+<dd><p>Build an Entrez&lt;-&gt;symbol map for any KEGG species and optionally save it.</p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">/conv/&lt;org&gt;/ncbi-geneid</span></code> (Entrez) plus <code class="docutils literal notranslate"><span class="pre">/list/&lt;org&gt;</span></code> (symbols),
+so the converter is not restricted to human.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pygage.data_processing_utils">
+<span id="data-processing"></span><h2>Data processing<a class="headerlink" href="#module-pygage.data_processing_utils" title="Link to this heading"></a></h2>
+<p>Data Processing and Expression Analysis Utilities (corrected).</p>
+<p>The critical fix here is <a class="reference internal" href="#pygage.data_processing_utils.DataTransformer.row_normalize" title="pygage.data_processing_utils.DataTransformer.row_normalize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataTransformer.row_normalize()</span></code></a>, which now
+z-scores each <em>gene</em> (row) across samples, matching its name/docstring and the
+behaviour GAGE and heatmap conventions expect.  The original implementation
+z-scored each <em>column</em> (sample) across genes – a transposed operation that
+silently produced misleading heatmaps and per-gene statistics.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.DataTransformer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.data_processing_utils.</span></span><span class="sig-name descname"><span class="pre">DataTransformer</span></span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#DataTransformer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.DataTransformer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data transformation utilities.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.DataTransformer.row_normalize">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">row_normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#DataTransformer.row_normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.DataTransformer.row_normalize" title="Link to this definition"></a></dt>
+<dd><p>Z-score each gene (row) across its sample columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – DataFrame with an optional <code class="docutils literal notranslate"><span class="pre">gene_col</span></code> plus numeric samples.</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>) – Name of the ID column to leave untouched (if present).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with the same shape; numeric columns replaced by
+per-row z-scores.  Rows with zero variance are centred only.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.DataTransformer.column_normalize">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">column_normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#DataTransformer.column_normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.DataTransformer.column_normalize" title="Link to this definition"></a></dt>
+<dd><p>Z-score each sample (column) across genes.</p>
+<p>Provided explicitly for the cases where per-sample standardisation is
+actually wanted (e.g. quantile-style preprocessing), so the intent is
+never ambiguous at the call site.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.DataTransformer.prepare_paired_data">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">prepare_paired_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'paired'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_logged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#DataTransformer.prepare_paired_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.DataTransformer.prepare_paired_data" title="Link to this definition"></a></dt>
+<dd><p>Prepare paired/unpaired fold-change data, preserving <code class="docutils literal notranslate"><span class="pre">gene_col</span></code>.</p>
+<p>Fold change is a difference on log data (GAGE convention).  Set
+<code class="docutils literal notranslate"><span class="pre">input_logged=False</span></code> to log-transform raw values first.  Indices are
+interpreted against the non-ID columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>ref_indices</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>samp_indices</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>comparison</strong> (<em>str</em>)</p></li>
+<li><p><strong>use_fold</strong> (<em>bool</em>)</p></li>
+<li><p><strong>input_logged</strong> (<em>bool</em>)</p></li>
+<li><p><strong>log_base</strong> (<em>float</em>)</p></li>
+<li><p><strong>pseudocount</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.GeneExtractor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.data_processing_utils.</span></span><span class="sig-name descname"><span class="pre">GeneExtractor</span></span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#GeneExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.GeneExtractor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gene extraction utilities.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.GeneExtractor.extract_essential_genes">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">extract_essential_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gene_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank_by_abs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#GeneExtractor.extract_essential_genes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.GeneExtractor.extract_essential_genes" title="Link to this definition"></a></dt>
+<dd><p>Return genes from <code class="docutils literal notranslate"><span class="pre">gene_set</span></code> whose mean fold change is an outlier.</p>
+<p>The z-score is computed relative to the per-gene mean distribution of
+all measured genes; genes with <code class="docutils literal notranslate"><span class="pre">|z|</span> <span class="pre">&gt;</span> <span class="pre">threshold</span></code> are retained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gene_set</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>)</p></li>
+<li><p><strong>rank_by_abs</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DataFrame</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.GeneDataExporter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pygage.data_processing_utils.</span></span><span class="sig-name descname"><span class="pre">GeneDataExporter</span></span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#GeneDataExporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.GeneDataExporter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gene data export and visualization.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.GeneDataExporter.export_gene_data">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">export_gene_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_heatmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heatmap_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#GeneDataExporter.export_gene_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.GeneDataExporter.export_gene_data" title="Link to this definition"></a></dt>
+<dd><p>Write selected genes to CSV/TSV and optionally draw a heatmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>genes</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>create_heatmap</strong> (<em>bool</em>)</p></li>
+<li><p><strong>heatmap_output</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygage.data_processing_utils.GeneDataExporter.create_scatterplot">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create_scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gene_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygage/data_processing_utils.html#GeneDataExporter.create_scatterplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygage.data_processing_utils.GeneDataExporter.create_scatterplot" title="Link to this definition"></a></dt>
+<dd><p>Scatter reference vs. sample with an identity line (NaN-safe).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression_data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>ref_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>samp_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>gene_col</strong> (<em>str</em>)</p></li>
+<li><p><strong>genes</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>output_file</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="performance.html" class="btn btn-neutral float-left" title="Performance &amp; the Rust kernel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Richard A. White III, Jose L. Figueroa III (CC BY-NC 4.0).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

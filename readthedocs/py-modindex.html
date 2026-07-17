@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Module Index &mdash; PyGAGE 1.2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b6192ffe" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyGAGE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-pypi">From PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-bioconda">From Bioconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-source">From source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verify">Verify</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#from-the-command-line">From the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">How GAGE works</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="method.html#preparation">1. Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#per-sample-gene-set-statistic">2. Per-sample gene-set statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="method.html#cross-sample-meta-summarisation">3. Cross-sample meta-summarisation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/inputs.html">Inputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#raw-expression-matrix">Raw expression matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#de-tables-deseq2-edger-limma">DE tables (DESeq2 / edgeR / limma)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pre-ranked-vector-fgsea-style">Pre-ranked vector (fgsea-style)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/inputs.html#pandas-anndata">pandas / AnnData</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/genesets.html">Gene-set sourcing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-pathways-any-organism">KEGG pathways (any organism)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#kegg-orthology-species-agnostic">KEGG Orthology (species-agnostic)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#gene-ontology-gaf-obo-with-propagation">Gene Ontology (GAF + OBO, with propagation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#reactome">Reactome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#msigdb-any-gmt">MSigDB / any GMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/genesets.html#versioned-offline-cache">Versioned offline cache</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/running.html">Running GAGE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#typed-result">Typed result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#the-gage-convenience-function">The <code class="docutils literal notranslate"><span class="pre">gage()</span></code> convenience function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/results.html">Understanding the results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/results.html#collapsing-redundant-sets">Collapsing redundant sets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/visualization.html">Visualization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#run-gage">Run GAGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#download-kegg-gene-sets">Download KEGG gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#build-go-gene-sets">Build GO gene sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#compare-result-tables">Compare result tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#migration-from-the-1-0-0-scripts">Migration from the 1.0.0 scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validation.html">Validation / parity with gage R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance &amp; the Rust kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#optional-rust-pyo3-kernel-for-the-per-set-statistic-loop">Optional Rust/PyO3 kernel for the per-set statistic loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#when-it-is-worth-it">When it is worth it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#what-to-port">What to port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#correctness-gate-the-important-part">Correctness gate (the important part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#expected-speedup">Expected speedup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.core">Core engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.benjamini_hochberg"><code class="docutils literal notranslate"><span class="pre">benjamini_hochberg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEResult"><code class="docutils literal notranslate"><span class="pre">GAGEResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEPreparation"><code class="docutils literal notranslate"><span class="pre">GAGEPreparation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.core.GAGEAnalysis"><code class="docutils literal notranslate"><span class="pre">GAGEAnalysis</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.io_loaders">Input adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_matrix"><code class="docutils literal notranslate"><span class="pre">read_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_de_table"><code class="docutils literal notranslate"><span class="pre">read_de_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.read_preranked"><code class="docutils literal notranslate"><span class="pre">read_preranked()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.io_loaders.gage"><code class="docutils literal notranslate"><span class="pre">gage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.gene_sets">Gene-set sourcing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.GeneSetCollection"><code class="docutils literal notranslate"><span class="pre">GeneSetCollection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_gmt"><code class="docutils literal notranslate"><span class="pre">load_gmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_msigdb"><code class="docutils literal notranslate"><span class="pre">load_msigdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_reactome"><code class="docutils literal notranslate"><span class="pre">load_reactome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.load_go"><code class="docutils literal notranslate"><span class="pre">load_go()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_sets.GeneSetCache"><code class="docutils literal notranslate"><span class="pre">GeneSetCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.pathway_database_utils">Pathway / KEGG / GO retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#fixes-vs-the-original-draft">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#extensions-for-non-human-non-model-use">Extensions for non-human / non-model use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.pathway_database_utils.KEGGPathwayRetriever"><code class="docutils literal notranslate"><span class="pre">KEGGPathwayRetriever</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.pathway_database_utils.GOGeneSetRetriever"><code class="docutils literal notranslate"><span class="pre">GOGeneSetRetriever</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.results_analysis">Results analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id1">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.esset_grp"><code class="docutils literal notranslate"><span class="pre">esset_grp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.ResultsComparator"><code class="docutils literal notranslate"><span class="pre">ResultsComparator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.GeneSetGrouper"><code class="docutils literal notranslate"><span class="pre">GeneSetGrouper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.results_analysis.SignificanceFilter"><code class="docutils literal notranslate"><span class="pre">SignificanceFilter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.tests">Statistical tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.tests.GeneSetTests"><code class="docutils literal notranslate"><span class="pre">GeneSetTests</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.visualization_utils">Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id2">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.ColorUtils"><code class="docutils literal notranslate"><span class="pre">ColorUtils</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.VennDiagram"><code class="docutils literal notranslate"><span class="pre">VennDiagram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.HeatmapPlotter"><code class="docutils literal notranslate"><span class="pre">HeatmapPlotter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.visualization_utils.EnrichmentPlots"><code class="docutils literal notranslate"><span class="pre">EnrichmentPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.gene_id_utils">Gene-ID conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id3">Fixes vs. the original draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_id_utils.GeneIDConverter"><code class="docutils literal notranslate"><span class="pre">GeneIDConverter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.gene_id_utils.build_kegg_symbol_map"><code class="docutils literal notranslate"><span class="pre">build_kegg_symbol_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pygage.data_processing_utils">Data processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.DataTransformer"><code class="docutils literal notranslate"><span class="pre">DataTransformer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.GeneExtractor"><code class="docutils literal notranslate"><span class="pre">GeneExtractor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#pygage.data_processing_utils.GeneDataExporter"><code class="docutils literal notranslate"><span class="pre">GeneDataExporter</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">Changelog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id2">[1.2.0] — 2026</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id3">[1.0.0]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyGAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python Module Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+   <h1>Python Module Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-p"><strong>p</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-p"><td></td><td>
+       <strong>p</strong></td><td></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-1" style="display: none" alt="-" /></td>
+       <td>
+       <code class="xref">pygage</code></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.core"><code class="xref">pygage.core</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.data_processing_utils"><code class="xref">pygage.data_processing_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.gene_id_utils"><code class="xref">pygage.gene_id_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.gene_sets"><code class="xref">pygage.gene_sets</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.io_loaders"><code class="xref">pygage.io_loaders</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.pathway_database_utils"><code class="xref">pygage.pathway_database_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.results_analysis"><code class="xref">pygage.results_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.tests"><code class="xref">pygage.tests</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api.html#module-pygage.visualization_utils"><code class="xref">pygage.visualization_utils</code></a></td><td>
+       <em></em></td></tr>
+   </table>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Richard A. White III, Jose L. Figueroa III (CC BY-NC 4.0).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
