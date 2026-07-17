@@ -586,25 +586,6 @@ Full API docs: **https://pygage.readthedocs.io**
 
 ---
 
-## Migrating from 1.0.0
-
-1.2.0 is a correctness + capability release. Key changes:
-
-- **Correctness.** The core statistic is now the genuine two-level GAGE test and
-  matches gage R to ~1e-15; `prepare_expression()` preserves the gene-ID column
-  (the library API and every example now work without the old CLI monkey-patch);
-  KEGG retrieval uses the correct `path:` entry prefix and returns gene sets for
-  every species. A full audit of 28 fixed issues accompanies the release.
-- **New modules.** `io_loaders` (DE/pre-ranked/AnnData + `gage()`), `gene_sets`
-  (GMT/Reactome/GO/cache), `cli` (unified command).
-- **CLI.** The seven `pygage-*.py` scripts are replaced by a single `pygage`
-  command (see the [migration table](#command-line-interface)).
-- **Import paths.** Use `from pygage.core import GAGEAnalysis` (the 1.0.0 README's
-  `pygage.gage_core` / `pygage.gage_tests` names were typos; the modules are
-  `pygage.core` and `pygage.tests`).
-
----
-
 ## Citation
 
 If you publish results obtained with **PyGAGE**, please cite:
