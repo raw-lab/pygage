@@ -9,7 +9,7 @@
 (*Generally Applicable Gene-set Enrichment*, Luo *et al.* 2009) for pathway
 analysis. 
 
-- It reproduces the GAGE R package **to machine precision** on real data
+It reproduces the GAGE R package **to machine precision** on real data
 (~1e-15 across every reported column, both directions, t-test / z-test / Fisher
 meta), and adds first-class support for the inputs people actually have
 (DESeq2/edgeR/limma tables, pre-ranked vectors, AnnData), broad gene-set sourcing
