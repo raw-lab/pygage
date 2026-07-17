@@ -1,566 +1,638 @@
-# pyGAGE - GAGE Analysis in Python
+# PyGAGE — Generally Applicable Gene-set Enrichment in Python
 
-Python version of the GAGE (Generally Applicable Gene Set Enrichment) analysis package.
+[![Docs](https://img.shields.io/badge/docs-readthedocs-blue)](https://pygage.readthedocs.io)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org)
+[![Validated vs gage R](https://img.shields.io/badge/gage%20R%20parity-~1e--15-brightgreen)](#validation--parity-with-gage-r)
 
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pygage?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pygage)
+**PyGAGE** is a fast, dependency-light Python implementation of **GAGE**
+(*Generally Applicable Gene-set Enrichment*, Luo *et al.* 2009) for pathway
+analysis. It reproduces the GAGE R package **to machine precision** on real data
+(~1e-15 across every reported column, both directions, t-test / z-test / Fisher
+meta), and adds first-class support for the inputs people actually have
+(DESeq2/edgeR/limma tables, pre-ranked vectors, AnnData), broad gene-set sourcing
+(KEGG, KEGG Orthology, GO, Reactome, MSigDB), extra statistical rigor, a unified
+command-line interface, and publication-ready plots.
 
-## Overview
+Built on **polars / numpy / scipy / seaborn**, consistent with the RAW Lab
+toolchain (MetaCerberus, MerCat2, NFixDB, DeGenPrime).
 
-Uses Python modules using:
-- **polars** for fast dataframe operations (instead of pandas)
-- **seaborn/matplotlib** for visualization
-- **scipy** for statistical tests
-- **argparse** for command-line interfaces
-- **numpy** for numerical operations
+---
+
+## Table of contents
+
+- [Highlights](#highlights)
+- [Installation](#installation)
+- [60-second quickstart](#60-second-quickstart)
+- [How GAGE works](#how-gage-works)
+- [Inputs](#inputs)
+- [Gene-set sourcing](#gene-set-sourcing)
+- [Running GAGE](#running-gage)
+- [The `gage()` convenience function](#the-gage-convenience-function)
+- [Understanding the results](#understanding-the-results)
+- [Collapsing redundant sets (`esset_grp`)](#collapsing-redundant-sets-esset_grp)
+- [Visualization](#visualization)
+- [Command-line interface](#command-line-interface)
+- [Validation / parity with gage R](#validation--parity-with-gage-r)
+- [Data format requirements](#data-format-requirements)
+- [Performance](#performance)
+- [API overview](#api-overview)
+- [Migrating from 1.0.0](#migrating-from-100)
+- [Citation](#citation)
+- [License · Support · Contributing](#license)
+
+---
+
+## Highlights
+
+- **It *is* GAGE.** The two-level design is intact: a per-sample test of each gene
+  set against the array-wide background, combined across samples by a meta-test
+  (Stouffer's Z by default, Fisher/gamma optional). Rankings and p-values match
+  GAGE — validated numerically against the R package (see [below](#validation--parity-with-gage-r)).
+- **Inputs people have.** `read_de_table` auto-detects DESeq2 / edgeR / limma
+  columns; pre-ranked (fgsea-style) vectors and **pandas / AnnData** are accepted
+  alongside polars.
+- **Gene sets from everywhere.** KEGG pathways (any organism), **KEGG Orthology**
+  (species-agnostic, for metagenomes / viromes / phages), GO (GAF + OBO with DAG
+  propagation), Reactome, and MSigDB/GMT — with a versioned offline cache and
+  provenance stamped into every collection.
+- **More rigor.** Optional control-gene-set background, sample-label permutation
+  null, effect size + leading-edge genes, global BH across greater∪less,
+  multi-core over gene sets, NaN-robust throughout.
+- **One CLI.** A single `pygage` command with `run` / `kegg` / `go` / `compare`
+  subcommands replaces the seven per-module scripts.
+- **Plots.** Bubble/dot plot, cross-condition enrichment heatmap, GSEA-style
+  running-enrichment plot, and pathview-style KEGG member colouring.
+
+---
 
 ## Installation
 
-### Quick install
+### From PyPI
 
 ```bash
 pip install pygage
 ```
 
-### Custom install
+### From Bioconda
 
 ```bash
-# Clone repository
+conda install -c bioconda pygage
+```
+
+### From source
+
+```bash
 git clone https://github.com/raw-lab/pygage
 cd pygage
-
-# Install dependencies
-pip install polars numpy scipy matplotlib seaborn requests
 pip install .
+# with optional extras:
+pip install ".[anndata]"     # AnnData input
+pip install ".[test]"        # run the test suite (incl. the gage-R regression)
+pip install ".[docs]"        # build the documentation
 ```
 
-## Modules
-
-### 1. gene_id_utils.py
-Convert between Entrez Gene IDs and gene symbols.
-
-**Usage:**
-```bash
-# Convert Entrez IDs to symbols
-pygage-gene_id_utils.py input_ids.txt \
-    --mapping egSymb.csv \
-    --direction eg2sym \
-    --output output_symbols.csv
-
-# Convert symbols to Entrez IDs
-pygage-gene_id_utils.py input_symbols.txt \
-    --mapping egSymb.csv \
-    --direction sym2eg \
-    --output output_ids.csv
-```
-
-**Python API:**
-```python
-from pygage.gene_id_utils import GeneIDConverter
-
-converter = GeneIDConverter('egSymb.csv')
-symbols = converter.eg2sym(['1', '2', '3'])
-entrez_ids = converter.sym2eg(['TP53', 'BRCA1', 'EGFR'])
-```
+**Requirements:** Python ≥ 3.8; `polars`, `numpy`, `scipy`, `matplotlib`,
+`seaborn`, `pandas`, `pyarrow`, `requests`. `anndata` is optional.
 
 ---
 
-### 2. pathway_database_utils.py
-Retrieve gene sets from KEGG and Gene Ontology databases.
+## 60-second quickstart
 
-**Usage:**
-```bash
-# Retrieve KEGG pathways
-pygage-pathway_database_utils.py kegg \
-    --species hsa \
-    --id-type entrez \
-    --output kegg_pathways.json
+PyGAGE ships the real GAGE demo data (`gse16873`, the 6 HN vs 6 DCIS breast-cancer
+set) so you can run a full analysis with zero downloads:
 
-# Retrieve GO gene sets
-pygage-pathway_database_utils.py go \
-    --annotation-file goa_human.gaf \
-    --species human \
-    --output go_genesets.json
-```
-
-**Python API:**
 ```python
-from pygage.pathway_database_utils import KEGGPathwayRetriever, GOGeneSetRetriever
-
-# KEGG
-kegg = KEGGPathwayRetriever()
-pathways = kegg.get_pathway_genes(species='hsa', id_type='entrez')
-
-# GO
-go = GOGeneSetRetriever()
-gene_sets = go.get_go_gene_sets(species='human', annotation_file='goa_human.gaf')
-```
-
----
-
-### 3. visualization_utils.py
-Create heatmaps, Venn diagrams, and color palettes.
-
-**Usage:**
-```bash
-# Create Venn diagram
-pygage-visualization_utils.py venn \
-    --input comparison_data.csv \
-    --names "Sample1" "Sample2" "Sample3" \
-    --include both \
-    --output venn_diagram.png
-
-# Create heatmap
-pygage-visualization_utils.py heatmap \
-    --input expression_data.csv \
-    --output heatmap.png \
-    --cluster \
-    --cmap RdYlGn_r \
-    --title "Gene Expression Heatmap"
-```
-
-**Python API:**
-```python
-from pygage.visualization_utils import HeatmapPlotter, VennDiagram, ColorUtils
-import polars as pl
-
-# Heatmap
-data = pl.read_csv('expression_data.csv')
-plotter = HeatmapPlotter()
-plotter.plot_clustered_heatmap(data, output_file='heatmap.png')
-
-# Venn diagram
-venn = VennDiagram()
-counts = venn.venn_counts(data, include='both')
-venn.plot_venn2(counts, ['Set1', 'Set2'], 'venn.png')
-
-# Color palette
-cmap = ColorUtils.greenred(256)
-```
-
----
-
-### 4. data_processing_utils.py
-Data transformation, normalization, and gene extraction.
-
-**Usage:**
-```bash
-# Normalize data
-pygage-data_processing_utils.py normalize \
-    --input expression_data.csv \
-    --output normalized_data.csv
-
-# Extract essential genes
-pygage-data_processing_utils.py extract \
-    --input expression_data.csv \
-    --genes gene_list.txt \
-    --output essential_genes.csv \
-    --threshold 1.5
-
-# Export and visualize
-pygage-data_processing_utils.py export \
-    --input expression_data.csv \
-    --genes gene_list.txt \
-    --output gene_data.csv \
-    --heatmap gene_heatmap.png \
-    --normalize
-```
-
-**Python API:**
-```python
-from pygage.data_processing_utils import DataTransformer, GeneExtractor, GeneDataExporter
-import polars as pl
-
-# Normalize
-data = pl.read_csv('expression_data.csv')
-transformer = DataTransformer()
-normalized = transformer.row_normalize(data)
-
-# Extract essential genes
-extractor = GeneExtractor()
-essential = extractor.extract_essential_genes(
-    gene_set=['TP53', 'BRCA1', 'EGFR'],
-    expression_data=data,
-    threshold=1.0
-)
-
-# Export with visualization
-exporter = GeneDataExporter()
-exporter.export_gene_data(
-    genes=['TP53', 'BRCA1'],
-    expression_data=data,
-    output_file='output.csv',
-    create_heatmap=True,
-    heatmap_output='heatmap.png'
-)
-```
-
----
-
-### 5. gage_core.py
-Core GAGE analysis functions.
-
-**Usage:**
-```bash
-pygage-core.py \
-    --expression expression_data.csv \
-    --gene-sets pathways.json \
-    --gene-col gene_id \
-    --ref-indices 0 1 2 \
-    --samp-indices 3 4 5 \
-    --comparison paired \
-    --test-method t-test \
-    --cutoff 0.1 \
-    --output results/
-```
-
-**Python API:**
-```python
-from pygage.gage_core import GAGEPreparation, GAGEAnalysis
-import polars as pl
 import json
-
-# Load data
-expr_data = pl.read_csv('expression_data.csv')
-with open('gene_sets.json') as f:
-    gene_sets = json.load(f)
-
-# Prepare data
-prep = GAGEPreparation()
-prepared = prep.prepare_expression(
-    expr_data,
-    ref_indices=[0, 1, 2],
-    samp_indices=[3, 4, 5],
-    comparison='paired'
-)
-
-# Run GAGE
-gage = GAGEAnalysis()
-results = gage.run_gage(
-    prepared,
-    gene_sets,
-    test_method='t-test'
-)
-
-# Filter significant
-significant = gage.filter_significant(cutoff=0.1)
-```
-
----
-
-### 6. gage_tests.py
-Statistical tests for gene set analysis.
-
-**Usage:**
-```bash
-pygage-tests.py \
-    --expression expression_data.csv \
-    --gene-sets pathways.json \
-    --gene-col gene_id \
-    --method t-test \
-    --min-size 10 \
-    --max-size 500 \
-    --output test_results.tsv
-```
-
-**Python API:**
-```python
-from pygage.tests import GeneSetTests
-import polars as pl
-import json
-
-expr_data = pl.read_csv('expression_data.csv')
-with open('gene_sets.json') as f:
-    gene_sets = json.load(f)
-
-tester = GeneSetTests()
-
-# t-test
-results = tester.t_test(expr_data, gene_sets)
-
-# z-test
-results = tester.z_test(expr_data, gene_sets)
-
-# KS test
-results = tester.kolmogorov_smirnov_test(expr_data, gene_sets)
-```
-
----
-
-### 7. results_analysis.py
-Analyze and compare GAGE results.
-
-**Usage:**
-```bash
-# Compare multiple results
-pygage-results_analysis.py compare \
-    --inputs result1.tsv result2.tsv result3.tsv \
-    --names "Control" "Treatment1" "Treatment2" \
-    --cutoff 0.1 \
-    --output combined_results.tsv \
-    --venn comparison_venn.png
-
-# Filter significant results
-pygage-results_analysis.py filter \
-    --greater greater_results.tsv \
-    --less less_results.tsv \
-    --cutoff 0.1 \
-    --output-dir filtered_results/
-
-# Group overlapping gene sets
-pygage-results_analysis.py group \
-    --results gage_results.tsv \
-    --gene-sets pathways.json \
-    --expression expression_data.csv \
-    --output gene_set_groups.json
-```
-
-**Python API:**
-```python
-from pygage.results_analysis import ResultsComparator, GeneSetGrouper, SignificanceFilter
 from pathlib import Path
+import polars as pl
+from pygage import core, gage
 
-# Compare results
-comparator = ResultsComparator()
-combined = comparator.compare_results(
-    [Path('r1.tsv'), Path('r2.tsv')],
-    ['Sample1', 'Sample2'],
-    q_cutoff=0.1,
-    output_file=Path('combined.tsv')
-)
+reg = Path(core.__file__).parent / "data" / "regression"
+prepared  = pl.read_csv(reg / "gse16873_prepared.csv.gz", schema_overrides={"gene_id": pl.Utf8})
+gene_sets = json.loads((reg / "kegg_gs.json").read_text())
 
-# Create Venn diagram
-comparator.create_venn_comparison(
-    [Path('r1.tsv'), Path('r2.tsv')],
-    ['Sample1', 'Sample2'],
-    output_file=Path('venn.png')
-)
-
-# Filter significant
-filterer = SignificanceFilter()
-filtered = filterer.filter_significant(
-    results={'greater': greater_df, 'less': less_df},
-    cutoff=0.1
-)
-
-# Group gene sets
-grouper = GeneSetGrouper()
-groups = grouper.group_gene_sets(
-    results_df,
-    gene_sets,
-    expression_df,
-    output_file=Path('groups.json')
-)
+# one call -> a tidy result frame (direction-labelled)
+result = gage(prepared, gene_sets, prepared=True)
+print(result.filter(pl.col("direction") == "greater").sort("p_val").head(5))
 ```
 
----
+```
+┌───────────────────────────────────────────────┬──────────┬───────────┬────────────┬───────────┬───────────┐
+│ gene_set                                       ┆ set_size ┆ stat_mean ┆ p_val      ┆ q_val     ┆ direction │
+╞════════════════════════════════════════════════╪══════════╪═══════════╪════════════╪═══════════╪═══════════╡
+│ hsa04141 Protein processing in endoplasmic ret ┆ 164      ┆ 3.5171    ┆ 9.2371e-18 ┆ 1.48e-15  ┆ greater   │
+│ hsa00190 Oxidative phosphorylation             ┆ 118      ┆ 2.8488    ┆ 3.2788e-12 ┆ 2.62e-10  ┆ greater   │
+│ hsa03050 Proteasome                            ┆ 44       ┆ 2.6311    ┆ 2.1089e-10 ┆ 1.12e-08  ┆ greater   │
+│ …                                              ┆ …        ┆ …         ┆ …          ┆ …         ┆ …         │
+└────────────────────────────────────────────────┴──────────┴───────────┴────────────┴───────────┴───────────┘
+```
 
-## Complete Workflow Example
+Those are the published GAGE vignette hits (secretory / degradation machinery up
+in DCIS vs HN) — and they match the R package to ~1e-15.
+
+Or from the shell:
 
 ```bash
-#!/bin/bash
-
-# 1. Convert gene IDs (if needed)
-pygage-gene_id_utils.py gene_list.txt \
-    --mapping egSymb.csv \
-    --direction eg2sym \
-    --output gene_symbols.csv
-
-# 2. Retrieve KEGG pathways
-pygage-pathway_database_utils.py kegg \
-    --species hsa \
-    --id-type entrez \
-    --output kegg_pathways.json
-
-# 3. Prepare and normalize expression data
-pygage-data_processing_utils.py normalize \
-    --input raw_expression.csv \
-    --output normalized_expression.csv
-
-# 4. Run GAGE analysis
-pygage-core.py \
-    --expression normalized_expression.csv \
-    --gene-sets kegg_pathways.json \
-    --gene-col gene_id \
-    --ref-indices 0 1 2 \
-    --samp-indices 3 4 5 \
-    --comparison paired \
-    --test-method t-test \
-    --cutoff 0.1 \
-    --output gage_results/
-
-# 5. Filter significant results
-pygage-results_analysis.py filter \
-    --greater gage_results/greater.tsv \
-    --less gage_results/less.tsv \
-    --cutoff 0.05 \
-    --output-dir significant_results/
-
-# 6. Create visualizations
-pygage-visualization_utils.py heatmap \
-    --input significant_results/greater_significant.tsv \
-    --output heatmap_upregulated.png \
-    --cluster \
-    --title "Up-regulated Pathways"
-
-# 7. Extract essential genes from top pathway
-pygage-data_processing_utils.py extract \
-    --input normalized_expression.csv \
-    --genes top_pathway_genes.txt \
-    --output essential_genes.csv \
-    --threshold 2.0
-
-# 8. Export with visualization
-pygage-data_processing_utils.py export \
-    --input normalized_expression.csv \
-    --genes essential_genes.csv \
-    --output essential_genes_data.csv \
-    --heatmap essential_genes_heatmap.png \
-    --normalize
+pygage run expression.csv -g gene_sets.json -o results.csv --ref 0,1,2 --samp 3,4,5
 ```
 
 ---
 
-## Data Format Requirements
+## How GAGE works
 
-### Expression Data (CSV/TSV)
-```
-gene_id,sample1,sample2,sample3,sample4,sample5,sample6
-GENE001,5.2,5.4,5.1,8.3,8.5,8.1
-GENE002,3.1,3.3,3.2,3.4,3.5,3.3
-GENE003,7.8,7.9,8.0,4.2,4.1,4.3
-```
+GAGE's defining feature is a **two-level** test:
 
-### Gene Sets (JSON)
-```json
-{
-  "pathway1": ["GENE001", "GENE002", "GENE005"],
-  "pathway2": ["GENE003", "GENE004", "GENE006"],
-  "pathway3": ["GENE001", "GENE003", "GENE007"]
-}
-```
+1. **Preparation.** Per-gene fold changes are formed from reference vs sample
+   columns (paired / unpaired / as-group / one-on-group).
+2. **Per-sample test.** For each sample (column) *j* and gene set *S* of *n*
+   present genes, a two-sample-style statistic compares the set to the whole-array
+   background, using background mean `mu_j` and variance `s_j`:
 
-Or with metadata:
-```json
-{
-  "gene_sets": {
-    "pathway1": ["GENE001", "GENE002"],
-    "pathway2": ["GENE003", "GENE004"]
-  },
-  "pathway_names": {
-    "pathway1": "Cell cycle regulation",
-    "pathway2": "DNA repair"
-  }
-}
-```
+   ```
+   a  = var(S_j) / n          # set variance / set size
+   b  = s_j       / n          # background variance / SET size   (GAGE's definition)
+   df = (a + b)^2 / (a^2/(n-1) + b^2/(n-1))
+   stat_j   = (mean(S_j) - mu_j) * (a + b)^(-1/2)
+   p_up_j   = P(T_df > stat_j) ;  p_down_j = P(T_df < stat_j)
+   ```
 
-### Gene ID Mapping (CSV/TSV)
-```
-entrez_id,symbol
-1,TP53
-2,BRCA1
-3,EGFR
-```
+3. **Cross-sample meta.** The per-sample p-values are combined into one p-value
+   per set — **Stouffer's Z** by default:
+
+   ```
+   p.val     = Phi( sum_j qnorm(p_j) / sqrt(nc) )       # meta_method="stouffer"
+   p.geomean = exp( -sum_j -log(p_j) / nc )
+   stat.mean = mean_j stat_j
+   q.val     = BH(p.val)                                 # per direction
+   ```
+
+   A Fisher/gamma alternative is available (`meta_method="fisher"`).
+
+Separate **greater** and **less** tables report up- and down-regulated sets.
+PyGAGE also offers the PAGE-style **z-test** (`test_method="z-test"`) and a
+rank-based **KS test** (`test_method="ks-test"`).
+
+> The three `saaTest`s and both meta-combinations are ported 1:1 from the gage R
+> sources; the formulas above match `gs.tTest.R` / `gs.zTest.R` / `gageSum.R`
+> exactly. See the [validation section](#validation--parity-with-gage-r).
 
 ---
 
-## Key Differences from R Version
+## Inputs
 
-### 1. **Polars instead of Pandas**
-- Faster performance
-- More intuitive API
-- Better memory efficiency
-- Lazy evaluation support
+### Raw expression matrix (genes × samples)
 
 ```python
-# Polars syntax
-df.filter(pl.col('value') > 0.5)
-df.select(['col1', 'col2'])
-df.join(other_df, on='key', how='left')
+from pygage import read_matrix, GAGEPreparation, GAGEAnalysis
+
+expr = read_matrix("expression.csv")            # gene_id + sample columns
+prepared = GAGEPreparation.prepare_expression(
+    expr, ref_indices=[0, 1, 2], samp_indices=[3, 4, 5],
+    comparison="paired",       # paired | unpaired | as.group | 1ongroup
+    input_logged=True,         # set False to log2(x+1) first
+)
+result = GAGEAnalysis().run_gage(prepared, gene_sets)
 ```
 
-### 2. **Seaborn/Matplotlib instead of base R graphics**
-- More modern visualizations
-- Better default aesthetics
-- Easier customization
+### DE tables (DESeq2 / edgeR / limma)
 
-### 3. **Argparse for CLI**
-- Subcommands for different operations
-- Help text and validation built-in
-- Type checking
-
-### 4. **No Random Seed Issues**
-- Random seed properly handled by scipy
-- No hardcoded values
-
-### 5. **JSON for Gene Sets**
-- More portable than R's RData format
-- Human-readable
-- Easy to integrate with other tools
-
----
-
-## Error Handling
-
-All scripts include comprehensive error handling:
+Most users arrive with a differential-expression table, not a raw matrix.
+`read_de_table` auto-detects the gene, log2-fold-change, and statistic columns
+by common aliases (`log2FoldChange`, `logFC`, `coef`; `stat`, `t`, `LR`; …):
 
 ```python
-try:
-    converter = GeneIDConverter('mapping.csv')
-    symbols = converter.eg2sym(['1', '2', '3'])
-except ValueError as e:
-    print(f"Error: {e}")
-except FileNotFoundError:
-    print("Mapping file not found")
+from pygage import read_de_table, gage
+
+de = read_de_table("deseq2_results.csv", value="log2FC")   # or value="stat"
+result = gage(de, gene_sets)                                # single-sample ranked GAGE
+```
+
+### Pre-ranked vector (fgsea-style)
+
+```python
+from pygage import read_preranked, gage
+
+ranked = read_preranked({"TP53": 3.1, "BRCA1": -2.4, "EGFR": 1.8, ...})
+result = gage(ranked, gene_sets)
+```
+
+### pandas / AnnData
+
+```python
+import anndata as ad
+from pygage import gage
+
+adata = ad.read_h5ad("counts.h5ad")     # obs × var (samples × genes)
+result = gage(adata, gene_sets, ref_indices=[...], samp_indices=[...])
+```
+
+AnnData is transposed to genes × samples automatically; pandas DataFrames are
+accepted anywhere a polars frame is.
+
+---
+
+## Gene-set sourcing
+
+All loaders live in `pygage.gene_sets` (except KEGG/GO retrieval, which is in
+`pygage.pathway_database_utils`) and return either a plain `{name: [genes]}` dict
+or a `GeneSetCollection` carrying provenance (source, release, retrieval date,
+checksum).
+
+### KEGG pathways (any organism)
+
+```python
+from pygage.pathway_database_utils import KEGGPathwayRetriever
+
+kegg = KEGGPathwayRetriever()
+res = kegg.get_pathway_genes("hsa", id_type="entrez")   # mmu, eco, ath, dme, sce, ...
+gene_sets, names, categories = res["gene_sets"], res["pathway_names"], res["categories"]
+```
+
+### KEGG Orthology (species-agnostic — metagenomes, viromes, phages)
+
+For non-model organisms and metagenomic data, use KO-keyed gene sets. Annotate
+your genes to KO IDs (KofamScan / MetaCerberus / eggNOG) and run GAGE on the
+KO-level matrix:
+
+```python
+kegg = KEGGPathwayRetriever()
+all_kos = kegg.list_all_kos()                       # the full KO namespace (~26k) {K00001: "..."}
+ko_sets = kegg.get_ko_gene_sets(reference="pathway")# {map00010: [K00844, K12407, ...]}
+
+# or download once, reproducibly, to disk (sets + names + categories + full KO catalog + provenance)
+kegg.download_ko_gene_sets("ko_gene_sets.json", reference="pathway")
+```
+
+### Gene Ontology (GAF + optional OBO, with DAG propagation)
+
+```python
+from pygage.gene_sets import load_go
+
+go = load_go(
+    "goa_human.gaf",
+    obo_path="go-basic.obo",   # enables propagation and term names
+    aspect="BP",               # BP | MF | CC | None
+    include_iea=True,          # keep electronic annotations
+    propagate=True,            # roll annotations up the is_a / part_of DAG
+)
+print(go.n_sets, "GO sets;", go.metadata())
+```
+
+### Reactome
+
+```python
+from pygage.gene_sets import load_reactome
+
+# a ReactomePathways.gmt export...
+rx = load_reactome("ReactomePathways.gmt", id_type="gmt")
+# ...or the NCBI2Reactome mapping, filtered to a species
+rx = load_reactome("NCBI2Reactome_All_Levels.txt", id_type="ncbi2reactome",
+                   species="Homo sapiens")
+```
+
+### MSigDB / any GMT
+
+```python
+from pygage.gene_sets import load_gmt, load_msigdb
+
+hallmark = load_gmt("h.all.v2023.2.Hs.symbols.gmt", source="MSigDB", release="2023.2")
+c2       = load_msigdb("c2.cp.v2023.2.Hs.symbols.gmt", collection="C2")
+```
+
+### Versioned offline cache
+
+```python
+from pygage.gene_sets import GeneSetCache
+
+cache = GeneSetCache()                       # ~/.cache/pygage/gene_sets
+cache.save("hallmark_2023.2", hallmark)      # gzip on disk
+same = cache.load("hallmark_2023.2")         # offline-reproducible; checksum-verified
 ```
 
 ---
 
-## Troubleshooting
+## Running GAGE
 
-### Issue: "No numeric columns found"
-**Solution:** Ensure expression data has numeric columns and correct gene ID column name
+`GAGEAnalysis.run_gage` is the full engine. Defaults reproduce gage R exactly;
+the remaining arguments are opt-in extensions.
 
-### Issue: "Mapping data not loaded"
-**Solution:** Call `load_mapping()` or initialize with mapping file path
+```python
+from pygage import GAGEAnalysis
 
-### Issue: "Can't create Venn diagram for more than 3 sets"
-**Solution:** Venn diagrams limited to 2-3 sets; use heatmap for more comparisons
+ga  = GAGEAnalysis()
+res = ga.run_gage(
+    prepared, gene_sets,
+    gene_col="gene_id",
+    set_size_range=(10, 500),   # min/max genes present per set
 
-### Issue: "Memory error with large datasets"
-**Solution:** Use polars lazy evaluation or process in chunks
+    # --- statistic & combination (defaults = gage R) ---
+    test_method="t-test",       # t-test | z-test | ks-test
+    meta_method="stouffer",     # stouffer | fisher
+    same_dir=True,              # separate greater/less tables (False = |changes|)
+    fdr_method="BH",            # BH q-values (per direction)
+
+    # --- extensions (opt-in) ---
+    control_genes=None,         # background from a control gene set instead of all genes
+    global_bh=False,            # BH across the greater∪less union
+    compute_effect=True,        # add per-set mean fold change ("effect")
+    leading_edge=False,         # add member genes driving the signal
+    permutations=0,             # sample-label permutation null p-value (e.g. 1000)
+    n_jobs=1,                   # parallelise over gene sets (-1 = all cores)
+)
+greater, less, stats = res["greater"], res["less"], res["stats"]
+
+# filter to significant sets
+sig = ga.filter_significant(cutoff=0.05, use_q=True)   # {"greater": ..., "less": ...}
+```
+
+A typed result object is also available:
+
+```python
+r = ga.result_obj                       # GAGEResult
+r.greater; r.less; r.stats; r.meta      # dataframes + run metadata
+r.significant(cutoff=0.1)               # dict of filtered frames
+```
 
 ---
+
+## The `gage()` convenience function
+
+`gage()` wraps preparation + running for any input and returns a tidy,
+direction-labelled frame (or the raw dict with `tidy=False`):
+
+```python
+from pygage import gage
+
+# raw matrix
+gage(expr, gene_sets, ref_indices=[0,1,2], samp_indices=[3,4,5])
+# already-prepared fold-change matrix
+gage(prepared, gene_sets, prepared=True)
+# DE table / pre-ranked
+gage(read_de_table("deseq2.csv"), gene_sets)
+# switch test / meta and request extras
+gage(expr, gene_sets, ref_indices=[0,1,2], samp_indices=[3,4,5],
+     test_method="z-test", meta_method="fisher", compute_effect=True)
+```
+
+---
+
+## Understanding the results
+
+Each result table has one row per gene set:
+
+| column | meaning |
+|---|---|
+| `gene_set` | gene-set / pathway name |
+| `set_size` | number of set genes present in the data |
+| `stat_mean` | mean per-sample statistic (GAGE `stat.mean`) |
+| `p_geomean` | geometric mean of per-sample p-values (direction-specific) |
+| `p_val` | combined p-value (Stouffer or Fisher; GAGE `p.val`) |
+| `q_val` | Benjamini–Hochberg FDR of `p_val` (GAGE `q.val`) |
+| `effect` | *(optional)* mean fold change across the set |
+| `leading_edge` | *(optional)* member genes driving the signal |
+| `p_perm` | *(optional)* sample-label permutation p-value |
+
+`greater` ranks up-regulated sets, `less` ranks down-regulated sets. Lower
+`q_val` = stronger, more significant enrichment.
+
+---
+
+## Collapsing redundant sets (`esset_grp`)
+
+Highly overlapping pathways (e.g. *Lysosome* and *Other glycan degradation*) can
+appear together at the top. `esset_grp` is a faithful port of GAGE's `esset.grp`:
+it defines each set's **core genes** (those beyond one SD of the gene-mean
+distribution in the direction of interest), tests overlap against the pool of
+**essential genes** (beyond 2 SD) with the hypergeometric upper tail, and merges
+sets whose overlap p-value is below a threshold.
+
+```python
+from pygage.results_analysis import esset_grp
+
+groups = esset_grp(res["greater"], prepared, gene_sets,
+                   test4up=True, cutoff=0.01, pc=1e-10)
+for representative, members in groups["groups"].items():
+    if len(members) > 1:
+        print(representative, "<=", members)
+```
+
+---
+
+## Visualization
+
+```python
+from pygage.visualization_utils import EnrichmentPlots
+
+# 1) bubble / dot plot: x = stat.mean, colour = -log10(q), size = set_size
+EnrichmentPlots.bubble_plot(res["greater"], top_n=20, output_file="bubble.png")
+
+# 2) cross-condition enrichment heatmap
+EnrichmentPlots.enrichment_heatmap(
+    {"DCIS_vs_HN": res["greater"], "reverse": res["less"]},
+    output_file="enrichment_heatmap.png",
+)
+
+# 3) GSEA-style running-enrichment plot (for a ranked list)
+info = EnrichmentPlots.running_enrichment(ranked, gene_sets["hsa03050 Proteasome"],
+                                          output_file="running.png")
+print("ES =", info["ES"], "| leading edge:", len(info["leading_edge"]))
+
+# 4) pathview-style KEGG member colouring -> returns gene->hex for KGML reuse
+colors = EnrichmentPlots.pathway_gene_colors(
+    gene_sets["hsa03050 Proteasome"], fold_changes, output_file="pathway.png")
+```
+
+The `pathway_gene_colors` map plugs straight into a Pathview/SBGNview KGML
+overlay, bridging PyGAGE to the RAW Lab Pathview work.
+
+---
+
+## Command-line interface
+
+One command, four subcommands:
+
+```bash
+# run GAGE on a matrix or a DE table
+pygage run expression.csv -g gene_sets.json -o results.csv \
+    --ref 0,1,2 --samp 3,4,5 --compare paired --test t-test --meta stouffer
+
+pygage run deseq2_results.csv -g gene_sets.json -o results.csv --de-table --value log2FC
+
+# download gene sets from KEGG (pathway / KO / module)
+pygage kegg pathway -o kegg_hsa.json -s hsa --id-type entrez
+pygage kegg ko      -o ko_sets.json  --reference pathway
+pygage kegg module  -o modules.json  -s hsa
+
+# build GO gene sets from a GAF (+ optional OBO propagation)
+pygage go goa_human.gaf -o go_bp.json --obo go-basic.obo --aspect BP --propagate
+
+# combine result tables across conditions
+pygage compare ctrl.csv treat.csv -o combined.tsv --names Control,Treatment
+
+# verbose logging + help
+pygage -v run ...          # progress to stderr
+pygage run --help
+```
+
+**Migration from the 1.0.0 scripts** (the seven `pygage-*.py` wrappers are
+replaced by subcommands):
+
+| 1.0.0 script | 1.2.0 command |
+|---|---|
+| `pygage-core.py` | `pygage run` |
+| `pygage-pathway_database_utils.py kegg` | `pygage kegg pathway` |
+| `pygage-pathway_database_utils.py go` | `pygage go` |
+| `pygage-results_analysis.py compare` | `pygage compare` |
+| `pygage-tests.py` | `pygage run --test {t-test,z-test,ks-test}` |
+
+---
+
+## Validation / parity with gage R
+
+PyGAGE is not merely "close" to GAGE — it reproduces it. We ran the **actual
+`gage` R package** on its own demo data (`gse16873`, 11,979 genes × 12 samples;
+`kegg.gs`, 177 KEGG sets) and fed PyGAGE gage's *exact* prepared fold-change
+matrix, so the comparison isolates the statistic + meta step. Across all 160
+size-passing sets:
+
+| column | max &#124;Δ&#124; vs gage R |
+|---|---|
+| `stat.mean` | 4.9e-15 |
+| `p.val` (Stouffer) | 1.4e-15 |
+| `p.geomean` | 8.9e-16 |
+| `q.val` (BH) | 2.9e-15 |
+| `set.size` | 0 |
+
+The `less` direction is identical, the **z-test** matches to 1.9e-15, and the
+**Fisher/gamma** meta matches to 1.8e-15. Pearson *r* = 1.00000000 on both
+−log10(p) and `stat.mean`. `benjamini_hochberg` matches R's
+`p.adjust(method="BH")` to 1e-12.
+
+This is locked in as a **regression test** shipped with the package
+(`tests/test_regression_gage.py`, tolerance 1e-8) using gzipped gage-output
+fixtures, so it runs in CI on every change:
+
+```bash
+pip install ".[test]"
+pytest -v            # includes the gage-R regression
+```
+
+> **Scope note.** The t-test and z-test are the tightly-validated (default) paths.
+> KS-mode parity is algorithmic (R's `ks.test` and SciPy's `ks_2samp` differ on
+> tie handling / exact-vs-asymptotic p-values). A full reproducibility bundle
+> (run gage R yourself and diff) is available on request.
+
+---
+
+## Data format requirements
+
+**Expression matrix (CSV/TSV)** — genes × samples, gene column first:
+
+```
+gene_id,HN_1,HN_2,HN_3,DCIS_1,DCIS_2,DCIS_3
+7157,5.2,5.4,5.1,8.3,8.5,8.1
+672,3.1,3.3,3.2,3.4,3.5,3.3
+```
+
+**Gene sets (JSON)** — either a plain mapping or with metadata:
+
+```json
+{ "hsa03050 Proteasome": ["5683","5684","5685"], "hsa00190 Oxidative phosphorylation": ["498","513"] }
+```
+
+```json
+{ "gene_sets": { "path1": ["5683","5684"] }, "pathway_names": { "path1": "Proteasome" } }
+```
+
+**Gene-ID mapping (TSV)** — for Entrez ↔ symbol conversion (the real 40,784-row
+GAGE `egSymb` map ships with the package):
+
+```
+entrez_id	symbol
+7157	TP53
+672	BRCA1
+```
+
+---
+
+## Performance
+
+The polars/numpy/scipy engine handles KEGG/GO-scale collections (hundreds of
+sets) comfortably, and `n_jobs` parallelises over gene sets. For very large
+collections at many samples (e.g. MSigDB C2 × dozens of samples) or heavy
+permutation nulls, the inner per-set loop is a clean target for a native
+Rust/PyO3 kernel matching the RAW Lab pure-Rust pattern — a design note ships in
+`docs/` and is deliberately gated on the regression test so correctness is never
+traded for speed.
+
+---
+
+## API overview
+
+| Module | Key entry points |
+|---|---|
+| `pygage.core` | `GAGEPreparation`, `GAGEAnalysis`, `GAGEResult`, `benjamini_hochberg` |
+| `pygage.io_loaders` | `gage`, `read_matrix`, `read_de_table`, `read_preranked` |
+| `pygage.gene_sets` | `load_gmt`, `load_msigdb`, `load_reactome`, `load_go`, `GeneSetCollection`, `GeneSetCache` |
+| `pygage.pathway_database_utils` | `KEGGPathwayRetriever`, `GOGeneSetRetriever` |
+| `pygage.results_analysis` | `esset_grp`, `ResultsComparator`, `GeneSetGrouper`, `SignificanceFilter` |
+| `pygage.visualization_utils` | `EnrichmentPlots`, `HeatmapPlotter`, `VennDiagram`, `ColorUtils` |
+| `pygage.gene_id_utils` | `GeneIDConverter` |
+| `pygage.data_processing_utils` | `DataTransformer`, `GeneExtractor`, `GeneDataExporter` |
+| `pygage.tests` | `GeneSetTests` (t / z / KS, delegating to the core engine) |
+
+Full API docs: **https://pygage.readthedocs.io**
+
+---
+
+## Migrating from 1.0.0
+
+1.2.0 is a correctness + capability release. Key changes:
+
+- **Correctness.** The core statistic is now the genuine two-level GAGE test and
+  matches gage R to ~1e-15; `prepare_expression()` preserves the gene-ID column
+  (the library API and every example now work without the old CLI monkey-patch);
+  KEGG retrieval uses the correct `path:` entry prefix and returns gene sets for
+  every species. A full audit of 28 fixed issues accompanies the release.
+- **New modules.** `io_loaders` (DE/pre-ranked/AnnData + `gage()`), `gene_sets`
+  (GMT/Reactome/GO/cache), `cli` (unified command).
+- **CLI.** The seven `pygage-*.py` scripts are replaced by a single `pygage`
+  command (see the [migration table](#command-line-interface)).
+- **Import paths.** Use `from pygage.core import GAGEAnalysis` (the 1.0.0 README's
+  `pygage.gage_core` / `pygage.gage_tests` names were typos; the modules are
+  `pygage.core` and `pygage.tests`).
+
+---
+
+## Citation
+
+If you publish results obtained with **PyGAGE**, please cite:
+
+- Figueroa III JL, Brouwer CR, White III RA. 2026. *Statistically resolving
+  gene-set enrichment for pathway analysis that is broadly applicable via
+  PyGAGE.* bioRxiv.
+
+If you use the original R version, please also cite:
+
+- Luo W, Friedman MS, Shedden K, Hankenson KD, Woolf PJ. 2009. *GAGE: generally
+  applicable gene set enrichment for pathway analysis.* BMC Bioinformatics 10:161.
+  https://doi.org/10.1186/1471-2105-10-161
+
+---
+
+## License
+
+Creative Commons Attribution-NonCommercial (**CC BY-NC 4.0**) — academic and
+non-commercial use. See [LICENSE](LICENSE).
+
+## Support
+
+- **Issues:** https://github.com/raw-lab/pygage/issues
+- **Email:** [Dr. Richard Allen White III](mailto:rwhit101@charlotte.edu)
 
 ## Contributing
 
-Improvements welcome:
-1. Add more statistical tests
-2. Implement additional visualizations
-3. Add support for more gene set databases
-4. Improve performance with parallel processing
-
-We welcome contributions of other experts expanding features in PyGAGE including the R and python versions. Please contact us via support. 
-
----
-
-## 📄 License
-
-Creative Commons Attribution-NonCommercial (CC BY-NC 4.0) — See LICENSE file
-
-## 📚 Citing
-
-If you are publishing results obtained using PyGAGE, please cite: <br />
-- Pre-Print PyGAGE: Figueroa III JL, Brouwer CR, White III RA. 2026. Statistically resolving gene-set enrichment for pathway analysis that is broadly applicable via PyGAGE. bioRxiv.
-
-If you using the R version please cite: <br />
-- Luo, W., Friedman, M. S., Shedden, K., Hankenson, K. D., & Woolf, P. J. (2009). GAGE: generally applicable gene set enrichment for pathway analysis.
-BMC Bioinformatics, 10, 161. [GAGE](https://doi.org/10.1186/1471-2105-10-161)
-
----
-
-## 📞 Support
-
-- **Issues:** [open an issue](https://github.com/raw-lab/pygage/issues).  
-- **Email:** [Dr. Richard Allen White III](mailto:rwhit101@uncc.edu)
-
----
+Contributions are welcome — additional statistical tests, gene-set databases,
+visualizations, and performance work (including the R and Python versions).
+Please open an issue or reach out via Support.
