@@ -7,15 +7,14 @@
 
 **PyGAGE** is a fast, dependency-light Python implementation of **GAGE**
 (*Generally Applicable Gene-set Enrichment*, Luo *et al.* 2009) for pathway
-analysis. It reproduces the GAGE R package **to machine precision** on real data
+analysis. 
+
+- It reproduces the GAGE R package **to machine precision** on real data
 (~1e-15 across every reported column, both directions, t-test / z-test / Fisher
 meta), and adds first-class support for the inputs people actually have
 (DESeq2/edgeR/limma tables, pre-ranked vectors, AnnData), broad gene-set sourcing
 (KEGG, KEGG Orthology, GO, Reactome, MSigDB), extra statistical rigor, a unified
 command-line interface, and publication-ready plots.
-
-Built on **polars / numpy / scipy / seaborn**, consistent with the RAW Lab
-toolchain (MetaCerberus, MerCat2, NFixDB, DeGenPrime).
 
 ---
 
