@@ -1,7 +1,7 @@
 # PyGAGE — Generally Applicable Gene-set Enrichment in Python
 
 [![Docs](https://img.shields.io/badge/docs-readthedocs-blue)](https://pygage.readthedocs.io)
-[![Downloads PePy overall](https://static.pepy.tech/badge/pygage/)](https://pepy.tech/project/pygage)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pygage?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pygage)
 [![Downloads PePy monthly](https://static.pepy.tech/badge/pygage/month)](https://pepy.tech/project/pygage)
 [![Downloads PePy weekly](https://static.pepy.tech/badge/pygage/week)](https://pepy.tech/project/pygage)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE)
