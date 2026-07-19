@@ -7,6 +7,12 @@ Core engine
 .. automodule:: pygage.core
    :members:
 
+Configuration & compute
+------------------------
+
+.. automodule:: pygage.config
+   :members:
+
 Input adapters
 --------------
 
