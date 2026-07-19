@@ -1,2 +1,72 @@
-.wy-nav-content { max-width: 950px; }
-code.literal { color: #b5385a; }
+/* PyGAGE docs — lean polish on top of Furo */
+
+:root {
+  --pg-accent: #6d5efc;
+  --pg-accent-soft: rgba(109, 94, 252, 0.10);
+}
+
+/* Comfortable measure + rhythm */
+.content { max-width: 52rem; }
+article h1 { letter-spacing: -0.02em; font-weight: 700; }
+article h2 { letter-spacing: -0.01em; margin-top: 2.2rem; }
+
+/* Landing hero (the lead paragraph under the H1) */
+.pg-hero {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--color-foreground-secondary);
+  margin: 0.4rem 0 1.6rem;
+  max-width: 44rem;
+}
+.pg-tagline {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--pg-accent);
+  background: var(--pg-accent-soft);
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.9rem;
+}
+
+/* sphinx-design cards: quiet border, gentle lift on hover */
+.sd-card {
+  border: 1px solid var(--color-background-border);
+  border-radius: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  box-shadow: none;
+}
+.sd-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--pg-accent);
+  box-shadow: 0 10px 30px -12px rgba(109, 94, 252, 0.35);
+}
+.sd-card .sd-card-title { font-weight: 650; }
+
+/* Buttons */
+.sd-btn-primary,
+a.sd-btn-primary {
+  background: var(--pg-accent) !important;
+  border-color: var(--pg-accent) !important;
+}
+
+/* Code: softer corners, subtle inline chips */
+div.highlight, .highlight pre { border-radius: 10px; }
+code.literal {
+  background: var(--pg-accent-soft);
+  border: none;
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+}
+
+/* Tables read cleaner */
+table.docutils { border-radius: 10px; overflow: hidden; }
+table.docutils thead th { background: var(--pg-accent-soft); }
+
+/* Sidebar brand lockup spacing */
+.sidebar-logo { border-radius: 12px; }
+.sidebar-brand-text { font-weight: 700; letter-spacing: -0.01em; }
+
+/* Numbers table (parity) — tabular figures */
+.pg-nums td, .pg-nums th { font-variant-numeric: tabular-nums; }
