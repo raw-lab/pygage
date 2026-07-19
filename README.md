@@ -614,8 +614,56 @@ non-commercial use. See [LICENSE](LICENSE).
 - **Issues:** https://github.com/raw-lab/pygage/issues
 - **Email:** [Dr. Richard Allen White III](mailto:rwhit101@charlotte.edu)
 
+---
+
 ## Contributing
 
 Contributions are welcome — additional statistical tests, gene-set databases,
 visualizations, and performance work (including the R and Python versions).
 Please open an issue or reach out via Support.
+
+## Development setup
+
+```bash
+git clone https://github.com/raw-lab/pygage
+cd pygage
+python -m pip install -e ".[dev]"     # editable install + dev tools
+```
+
+The package uses a `src/` layout: the importable code lives in `src/pygage/`.
+
+## Running the tests
+
+```bash
+pytest                 # runs tests/ (includes the gage-R regression)
+pytest --cov=pygage    # with coverage
+```
+
+All contributions must keep the test suite green, including
+`tests/test_regression_gage.py`, which asserts machine-precision parity with the
+GAGE R package on shipped fixtures.
+
+## Linting / style
+
+```bash
+ruff check src tests
+```
+
+Please write NumPy/Google-style docstrings for public functions and classes;
+the API documentation is generated from them via Sphinx autodoc.
+
+## Building the documentation
+
+```bash
+pip install -e ".[docs]"
+sphinx-build -b html docs/source docs/build/html
+```
+
+## Pull-request checklist
+
+- [ ] Tests pass (`pytest`) and new behaviour is covered by a test.
+- [ ] Public API changes are documented (docstrings + a note in `CHANGELOG.md`).
+- [ ] No build artifacts, data dumps, or secrets are committed (see `.gitignore`).
+- [ ] `ruff check` is clean.
+
+---
