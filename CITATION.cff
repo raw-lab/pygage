@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "If you use PyGAGE, please cite the following."
+title: "PyGAGE: Generally Applicable Gene-set Enrichment for pathway analysis in Python"
+type: software
+authors:
+  - family-names: "White III"
+    given-names: "Richard Allen"
+    affiliation: "University of North Carolina at Charlotte"
+    email: "rwhit101@charlotte.edu"
+  - family-names: "Figueroa III"
+    given-names: "Jose Luis"
+    affiliation: "University of North Carolina at Charlotte"
+repository-code: "https://github.com/raw-lab/pygage"
+url: "https://pygage.readthedocs.io"
+license: "CC-BY-NC-4.0"
+version: "1.2.1"
+keywords:
+  - bioinformatics
+  - gene set enrichment
+  - GAGE
+  - pathway analysis
+preferred-citation:
+  type: article
+  title: "Statistically resolving gene-set enrichment for pathway analysis that is broadly applicable via PyGAGE"
+  authors:
+    - family-names: "Figueroa III"
+      given-names: "Jose Luis"
+    - family-names: "Brouwer"
+      given-names: "Cory R."
+    - family-names: "White III"
+      given-names: "Richard Allen"
+  year: 2026
+  journal: "bioRxiv"
+references:
+  - type: article
+    title: "GAGE: generally applicable gene set enrichment for pathway analysis"
+    authors:
+      - family-names: "Luo"
+        given-names: "Weijun"
+      - family-names: "Friedman"
+        given-names: "Michael S."
+      - family-names: "Shedden"
+        given-names: "Kerby"
+      - family-names: "Hankenson"
+        given-names: "Kurt D."
+      - family-names: "Woolf"
+        given-names: "Peter J."
+    year: 2009
+    journal: "BMC Bioinformatics"
+    volume: 10
+    start: 161
+    doi: "10.1186/1471-2105-10-161"

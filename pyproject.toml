@@ -46,29 +46,49 @@ dependencies = [
 
 [project.optional-dependencies]
 anndata = ["anndata"]
-test = ["pytest>=7", "anndata"]
-docs = ["sphinx>=7", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton"]
-all = ["anndata", "pytest>=7", "sphinx>=7", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton"]
+test = ["pytest>=7", "pytest-cov", "anndata"]
+docs = ["sphinx>=7", "furo", "sphinx-design", "myst-parser", "sphinx-copybutton"]
+dev = ["pytest>=7", "pytest-cov", "anndata", "ruff", "build", "sphinx>=7", "furo", "sphinx-design", "myst-parser", "sphinx-copybutton"]
 
 [project.urls]
 Homepage = "https://github.com/raw-lab/pygage"
 Repository = "https://github.com/raw-lab/pygage"
 Documentation = "https://pygage.readthedocs.io"
 Issues = "https://github.com/raw-lab/pygage/issues"
+Changelog = "https://github.com/raw-lab/pygage/blob/main/CHANGELOG.md"
 
-# Single unified console entry point (replaces the seven per-module scripts in 1.0.0).
 [project.scripts]
 pygage = "pygage.cli:main"
 
+# ---- src/ layout: packages are discovered under src/ ----
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["pygage*"]
 
 [tool.setuptools.package-data]
-pygage = ["data/*.tsv", "data/regression/*.gz", "data/regression/*.json"]
+pygage = ["py.typed", "data/*.tsv", "data/regression/*.gz", "data/regression/*.json"]
 
 [tool.setuptools.dynamic]
 version = {attr = "pygage.__version__"}
+
+# ---- tooling ----
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+# Real-bug + import-hygiene rules. UP (pyupgrade) is intentionally omitted:
+# it pushes PEP 585/604 syntax that is inappropriate for a py3.8 target.
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E501", "E741", "E702"]  # line length (formatter), math-style names, one-line semicolons
+
+[tool.coverage.run]
+source = ["pygage"]
+branch = true
