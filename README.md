@@ -197,6 +197,19 @@ prepared = GAGEPreparation.prepare_expression(
 result = GAGEAnalysis().run_gage(prepared, gene_sets)
 ```
 
+### Converting between gene symbols and Entrez IDs
+sym2eg: Converts gene symbols to Entrez IDs
+eg2sym: Converts Entrez IDs to gene symbols
+```python
+from pygage.gene_id_utils import GeneIDConverter
+import polars as pl
+
+matrix = pl.read_csv("gene_expression_matrix.csv")
+symbols = matrix['gene_id']
+eg = GeneIDConverter().sym2eg(symbols)
+matrix = matrix.with_columns(pl.Series("gene_id", eg))
+
+
 ### DE tables (DESeq2 / edgeR / limma)
 
 Most users arrive with a differential-expression table, not a raw matrix.
