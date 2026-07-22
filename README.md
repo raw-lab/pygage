@@ -203,12 +203,13 @@ sym2eg: Converts gene symbols to Entrez IDs
 eg2sym: Converts Entrez IDs to gene symbols
 ```python
 from pygage.gene_id_utils import GeneIDConverter
-import polars as pl
+from pygage import read_matrix
 
-matrix = pl.read_csv("gene_expression_matrix.csv")
-symbols = matrix['gene_id']
+matrix = read_matrix("expression.csv", gene_col='ID')
+
+symbols = matrix['ID']
 eg = GeneIDConverter().sym2eg(symbols)
-matrix = matrix.with_columns(pl.Series("gene_id", eg))
+matrix = matrix.with_columns(pl.Series("ID", eg))
 ```
 
 ### DE tables (DESeq2 / edgeR / limma)
