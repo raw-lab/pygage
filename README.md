@@ -199,6 +199,7 @@ result = GAGEAnalysis().run_gage(prepared, gene_sets)
 
 ### Converting between gene symbols and Entrez IDs
 sym2eg: Converts gene symbols to Entrez IDs
+
 eg2sym: Converts Entrez IDs to gene symbols
 ```python
 from pygage.gene_id_utils import GeneIDConverter
