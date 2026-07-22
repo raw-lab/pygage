@@ -208,7 +208,7 @@ matrix = pl.read_csv("gene_expression_matrix.csv")
 symbols = matrix['gene_id']
 eg = GeneIDConverter().sym2eg(symbols)
 matrix = matrix.with_columns(pl.Series("gene_id", eg))
-
+```
 
 ### DE tables (DESeq2 / edgeR / limma)
 
